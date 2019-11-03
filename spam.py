@@ -1,14 +1,21 @@
-SPAM_DICT = {} #maybe a universal variable with spam likely words, idk
-def is_spam_or_not(): #takes in a dictionary and string
+SPAM_DICT = {} #maybe a global variable with spam likely words, idk
+NON_SPAM_DICT = {} #maybe to compare
+
+def is_spam_or_not(message:str, message_dict:dict):
     """
     This function detemines if message is spam or 
-    not based on
+    not based on ...
     """
-    
+    spam_num = 0
+    for val in message_dict.values():
+        spam_num += val
+    if spam_num >= 80:
+        add_to_spam(list(message))
+        print('spam')
+    else:
+        print('not spam')
 
-
-
-def add_to_spam(spam:str):
+def add_to_spam(spam:list):
     """
     If the message is spam it'll append the words
     from the message to a dict. If words are alredy
@@ -16,7 +23,7 @@ def add_to_spam(spam:str):
     value. If the word is not in the dict it will get 
     added as a key with a value of one.
     """
-    spam_list = list(spam)
+    # spam_list = list(spam)
     for i in range(len(spam_list)):
         if spam_list(i) in spam_dict:
             previous_val = spam_dict.get(i)
@@ -43,24 +50,34 @@ def compare_to_spam(message:str):
             message_dict[i] = new_val
         elif message_list[i] not in SPAM_DICT:
             print('cool')
+    return message, message_dict
     
 
 #NOTES
 #is_spam_or_not function will take in a dictonary and string as its argument
 #based on value assigned to every word in compare_to_spam it will determine
-#if the string/message is spam or not. add_to_spam wil return
-#either 'spam' or 'not spam'.
+#if the string/message is spam or not.
+#The function add_to_spam wil either return 'spam' or 'not spam'.
 #
 #create a function to compare to non spam words same way it does with spam 
 #words, idk.
+#
+#Use phrases instead
+
+
 
 #PROBLEMS 
-#adding all words to spam dict could add non spam words.
+#Adding all words to spam dict could add non spam words.
 #
-#taking into account words like 'you', 'the', 'and', common words 
+#Taking into account words like 'you', 'the', 'and', common words 
 #that don't really mean much.
 #
-#point system.
+#Point system.
+#
+#Maybe instead of words use phrases.
+#
+#This would also require lots of entries to understand what spam words
+#are meaning the first couple of times it would mostlikely fail. 
 
 
 
