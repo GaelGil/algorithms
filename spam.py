@@ -63,6 +63,7 @@ def compare_to_spam(message:str):
 #words, idk.
 #
 #Use phrases instead
+#Create driver/main function
 
 
 
