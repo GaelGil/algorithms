@@ -1,0 +1,47 @@
+lunch = ["pizza", "soda", "banana"]
+
+sms = "win a free phone"
+
+win = 129
+a = -675
+free = -5
+phone = 3
+
+sms_encoded = [12, -5, 3]
+sms_encoded = [12, -5, 33]
+sms_encoded = [-99, -5, 3545]
+
+
+
+assert sum(sms_encoded) == 10
+
+
+val = sum(sms_encoded) # 10
+
+def decision(value, cutoff):
+    if value > cutoff:
+        return "spam"
+    return "ham"
+
+decision(val, 0) # spam
+decision(val, 20) # ham
+
+
+two things to figure out:
+   the mappings from words to numbers
+   the cutoff criteria
+
+p_spam(free | documents)
+
+
+{
+    "free": {"spam": 95, "ham": 12},
+    "win": {"spam": 5, "ham": 1},
+    "the": {"spam": 10000, "ham": 10000}
+}
+
+{
+    "free": 95/12,
+    "win": 5/1,
+    "the": 100000/100000
+}
