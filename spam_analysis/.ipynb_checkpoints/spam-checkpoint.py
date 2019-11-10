@@ -1,19 +1,19 @@
 # SPAM_DICT = {} #maybe a global variable with spam likely words, idk
 # NON_SPAM_DICT = {} #maybe to compare
 
-# def is_spam_or_not(message:list, message_dict:dict):
-#     """
-#     This function detemines if message is spam or 
-#     not based on ...
-#     """
-#     spam_num = 0
-#     for val in message_dict.values():
-#         spam_num += val
-#     if spam_num >= (len(message) * 10):
-#         add_to_spam(message)
-#         print('spam')
-#     else:
-#         print('not spam')
+# # def is_spam_or_not(message:list, message_dict:dict):
+# #     """
+# #     This function detemines if message is spam or 
+# #     not based on ...
+# #     """
+# #     spam_num = 0
+# #     for val in message_dict.values():
+# #         spam_num += val
+# #     if spam_num >= (len(message) * 10):
+# #         add_to_spam(message)
+# #         print('spam')
+# #     else:
+# #         print('not spam')
 
 
 # def add_to_spam(spam:list):
@@ -42,7 +42,6 @@
 #     spam likely words. 
 #     """
 #     message = message.split()
-#     message = [message.lower() for word in message] 
 #     message_list = list(message)
 #     message_dict = {}
 #     for i in range(len(message_list)):
@@ -74,7 +73,6 @@
 #     dictionary of bigrams
 #     """
 #     words = message.split()
-#     words = [words.lower() for word in words] 
 #     words_list =  list(words)
 #     phrases_dict = {}
 #     for i in range(len(words_list)-1):
@@ -84,7 +82,7 @@
 #         phrases_dict[phrase] = 0 
 #     return message, phrases_dict
 
-# #DRIVER FUNCTIONS
+
 # def spam_words(text):
 #     test_string = text
 #     message, message_dict = compare_to_words(text)
@@ -106,61 +104,66 @@
 
 # basic_test()
 
-# def algorithm_v1(sms: str) -> bool:
-#     """
-#     This function accepts an SMS message as a string and returns `True` if
-#     it is spam. Otherwise, it returns `False` if it's ham.
-#     """
-#     if "Free" in sms:
-#         return True
-
-#     return False
-
-
-# def algorithm_v2(sms:str):
-SPAM_DICT = {
-    'you' : 0,
-    'won' : 0 ,
-    'free' : 0,
-    'money' : 0,
-    'try' : 0,
-    'claim' : 0,
-    'prize' : 0,
-    'get' : 0,
-    'eligable': 0,
-}
-
-
-
-def compare_to_words(sms:list, sms_dict:dict):
-    for key in sms_dict:
-        word = key
-        if word in SPAM_DICT:
-            print('cool')
-        else:
-            print('also cool')    
-
-def crate_dict(sms:str):
+def algorithm_v1(sms: str) -> bool:
     """
-    This function takes in a string as its arguments and creates 
-    a dictionary with the keys as the words of the string and its 
-    values as a dictionay with spam set to 0 and ham set to 0
+    This function accepts an SMS message as a string and returns `True` if
+    it is spam. Otherwise, it returns `False` if it's ham.
     """
-    sms = sms.split()
-    sms = list(sms)
-    sms_dict = {}
-    for i in range(len(sms)):
-        word = sms[i]
-        sms_dict[word] = {'spam' : int(0), 'ham' : int(0)}
-    
-    return sms, sms_dict
+    if "Free" in sms:
+        return True
+
+    return False
 
 
-def main_func(sms):
-    sms, sms_dict = crate_dict(sms)
-    compare_to_words(sms, sms_dict)
+#NOTES
+#is_spam_or_not function will take in a dictonary and string as its argument
+#based on value assigned to every word in compare_to_spam it will determine
+#if the string/message is spam or not.
+#The function add_to_spam wil either return 'spam' or 'not spam'.
+#
+#create a function to compare to non spam words same way it does with spam 
+#words, idk.
+#
+#Use phrases instead
+#Create driver/main function
 
-text = 'hey are you free tomorrow'
-sms = 'you won free money try out claim prize get free you eligable'
 
-main_func(text)
+
+#PROBLEMS 
+#Adding all words to spam dict could add non spam words.
+#
+#Taking into account words like 'you', 'the', 'and', common words 
+#that don't really mean much.
+#
+#Point system.
+#
+#Maybe instead of words use phrases.
+#
+#This would also require lots of entries to understand what spam words
+#are meaning the first couple of times it would mostlikely fail. 
+
+
+
+
+# not_spam = "Are you free for dinner?"
+# spam = "Do you want free stuff?"
+
+# words_and_nums = {
+#     'num' : 5,
+#     'red' : 2,
+# }
+
+# print(words_and_nums.get('num'))
+
+# if 'num' in words_and_nums:
+#     add = words_and_nums.get('num')
+#     new_val = add + 1 
+#     words_and_nums['num'] = new_val
+# else:
+#     print('no')
+
+# print(words_and_nums.get('num'))
+
+
+# is_spam_or_not(spam)
+# is_spam_or_not(not_spam)
