@@ -78,7 +78,7 @@ def check(sms):
     message, phrases_dict = compare_to_phrases(words_list, phrases_dict)
     is_spam_or_not(message, phrases_dict)
 
-text = 'hey are you free tomorrow'
-sms = 'you won free money go to try out claim prize get free you aligble'
+# text = 'hey are you free tomorrow'
+# sms = 'you won free money go to try out claim prize get free you aligble'
 
-check(sms)
+# check(sms)
