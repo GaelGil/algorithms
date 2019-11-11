@@ -51,8 +51,8 @@ def compare_to_words(message:str):
     comparing everyword to words in a dictionay filled with
     spam likely words. 
     """
+    # message = message.lower()
     message = message.split()
-    # message = [message.lower() for word in message] 
     message_list = list(message)
     message_dict = {}
     for i in range(len(message_list)):
@@ -71,7 +71,7 @@ def check(sms):
     message_list, message_dict = compare_to_words(sms)
     is_spam_or_not(message_list, message_dict)
 
-text = 'hey are you free tomorrow'
-sms = 'you won free money try out claim prize get free you eligable'
+# text = 'hey are you free tomorrow'
+# sms = 'you won free money try out claim prize get free you eligable'
 
-check(text)
+# check(text)

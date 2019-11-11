@@ -31,6 +31,12 @@ def multi(sms:str):
     for i in range(len(sms)):
         word = sms[i]
         my_dict[word] = {'spam' : int(0), 'ham' : int(0)}
+    print(my_dict)
+    print(' ')
+    my_dict['my']['spam'] = 1
+    print(my_dict)
+    # print(my_dict['my']['spam'])
+
 
 
 sms = 'my words are here and they will be list'

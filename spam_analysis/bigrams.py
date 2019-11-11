@@ -33,7 +33,7 @@ def is_spam_or_not(message:list, message_dict:dict):
     spam_num = 0
     for val in message_dict.values():
         spam_num += val
-    print(spam_num)
+    # print(spam_num)
     if spam_num >= ((len(message)/2) * 10):
         add_to_spam(message)
         print('spam')
@@ -46,7 +46,7 @@ def compare_to_phrases(message:list, phrases:dict):
     """
     for key in phrases:
         phrase = key
-        print(phrase)
+        # print(phrase)
         if phrase in SPAM_DICT:
             previous_val = phrases.get(phrase)
             new_val = previous_val + 10 
@@ -61,8 +61,8 @@ def get_bigrams(message:str):
     This function takes in a string as its argument and creates a 
     dictionary of bigrams
     """
+    # message = message.lower()
     words = message.split()
-    # words = [words.lower() for word in words] 
     words_list =  list(words)
     phrases_dict = {}
     for i in range(len(words_list)-1):

@@ -130,15 +130,53 @@ SPAM_DICT = {
     'eligable': 0,
 }
 
+def add_to_spam(sms:list, sms_dict:dict):
+    """
+    If the message is spam it'll append the words
+    from the message to a dict. If words are alredy
+    in the dict it'll add plus one the their excisting 
+    value. If the word is not in the dict it will get 
+    added as a key with a value of one.
+    """
+    for i in range(len(sms)):
+        word = sms[i]
+        if word in SPAM_DICT:
+            previous_val = SPAM_DICT.get(word)
+            new_val = previous_val + 5
+            SPAM_DICT[i] = new_val 
+        else:
+            SPAM_DICT[word] = 0 
+
+
+def spam_or_ham(sms:list, sms_dict:dict):
+    spam_val = 0 
+    ham_val = 0
+    for key in sms_dict:
+        word = key
+        spam_val += sms_dict[word]['spam']
+    for key in sms_dict:
+        word = key
+        ham_val += sms_dict[word]['ham']
+    if spam_val >= ham_val:
+        print('spam')
+        add_to_spam(sms, sms_dict)
+    elif ham_val > spam_val:
+        print('ham')
+    else:
+        pass
 
 
 def compare_to_words(sms:list, sms_dict:dict):
     for key in sms_dict:
         word = key
         if word in SPAM_DICT:
-            print('cool')
+            val = SPAM_DICT.get(key)
+            sms_dict[key]['spam'] = val
+        elif word not in SPAM_DICT:
+            sms_dict[key]['ham'] = 1
         else:
-            print('also cool')    
+            pass
+    return sms, sms_dict 
 
 def crate_dict(sms:str):
     """
@@ -152,15 +190,17 @@ def crate_dict(sms:str):
     for i in range(len(sms)):
         word = sms[i]
         sms_dict[word] = {'spam' : int(0), 'ham' : int(0)}
-    
     return sms, sms_dict
 
 
-def main_func(sms):
-    sms, sms_dict = crate_dict(sms)
-    compare_to_words(sms, sms_dict)
+def main_func(message):
+    sms_list, sms_dict = crate_dict(message)
+    message_list, message_dict = compare_to_words(sms_list, sms_dict)
+    spam_or_ham(message_list, message_dict)
+    
 
-text = 'hey are you free tomorrow'
-sms = 'you won free money try out claim prize get free you eligable'
 
-main_func(text)
+# text = 'hey are you free tomorrow'
+# sms = 'you won free money try out claim prize get free you eligable'
+
+# main_func(text)
