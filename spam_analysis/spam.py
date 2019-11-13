@@ -118,6 +118,9 @@
 
 
 # def algorithm_v2(sms:str):
+from words import check as alg_v1
+from bigrams import check as alg_v2
+
 SPAM_DICT = {
     'you' : 0,
     'won' : 0 ,
@@ -221,8 +224,37 @@ def main_func(message):
 
 # text = 'hey are you free tomorrow'
 # sms = 'you won free money try out claim prize get free you eligable'
+# def get_alg_accuracy(algorithm, training_data) -> float:
+#     """
+#     This function accepts a spam-detector algorithm and some training data.
+#     It compares the predictions made by the algorithm with the actual labels
+#     from the dataset. It returns the fraction of predictions that were correct.
+#     First the data is transformed into a list of tuples,
+#     where the first index in the tuple is the label and the second is the
+#     SMS message, i.e. ("ham", "want to hang out tomorrow?")
+#     """
+#     correct = 0
 
+#     for label, data in training_data:
+#         prediction = algorithm(data)
+
+#         if prediction == label:
+#             correct += 1
+
+#     fraction_correct = correct / len(training_data)
+
+#     return fraction_correct
+
+# def right_or_wrong(sms:list, sms_dict:dict, result:str, laber:str):
+#     """
+#     """
+#     if result == label:
+#         pass
+#     elif result != label:
+#         add_to_spam(sms, sms_dict)
 # main_func(text)
+
+#refrence function above
 #NOTES 
 #I can add a final function that compares outcome to real label
 #if algorithm got it right dont append to the SPAM_DICT but if
