@@ -128,6 +128,25 @@ SPAM_DICT = {
     'prize' : 0,
     'get' : 0,
     'eligable': 0,
+    'For': 0,
+    'ur' :0, 
+    'chance' :0,
+    'to' :0,
+    'win' :0,
+    'a':0,
+    '£250':0,
+    'wkly':0,
+    'shopping':0,
+    'spree':0, 
+    'TXT:' :0, 
+    'SHOP' :0, 
+    'to':0, 
+    '80878.':0, 
+    'Ts&Cs':0, 
+    'www.txt-2-shop.com':0, 
+    'custcare':0, 
+    '08715705022,':0, 
+    '1x150p/wk':0
 }
 
 def add_to_spam(sms:list, sms_dict:dict):
@@ -204,3 +223,8 @@ def main_func(message):
 # sms = 'you won free money try out claim prize get free you eligable'
 
 # main_func(text)
+#NOTES 
+#I can add a final function that compares outcome to real label
+#if algorithm got it right dont append to the SPAM_DICT but if
+#its wrong append to dict. Run alg_v1 then alg_v2 and in the 
+# end alg_v3 should start to better detect spam
