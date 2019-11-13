@@ -228,3 +228,4 @@ def main_func(message):
 #if algorithm got it right dont append to the SPAM_DICT but if
 #its wrong append to dict. Run alg_v1 then alg_v2 and in the 
 # end alg_v3 should start to better detect spam
+#use same SPAM_DICT for all functions
