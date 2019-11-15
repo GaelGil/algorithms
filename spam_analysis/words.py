@@ -11,7 +11,6 @@ SPAM_DICT = {
 }
 
 
-
 def is_spam_or_not(message:list, message_dict:dict):
     """
     This function detemines if message is spam or 
@@ -25,7 +24,7 @@ def is_spam_or_not(message:list, message_dict:dict):
         print('spam')
         return('spam')
     else:
-        return('ham')
+        print('ham')
         return('ham')
 
 def add_to_spam(spam:list):
@@ -67,22 +66,26 @@ def compare_to_words(message:str):
             pass
     return message_list, message_dict
 
-def right_or_wrong(sms:list, sms_dict:dict, result:str, laber:str):
+def right_or_wrong(sms:list, result:str, label:str):
     """
+    This function takes in the message, result of my function,
+    and real label of the function. If the result matches the 
+    labe everything is cood. If the result does not match the
     """
     if result == label:
-        pass
+        print('correct')
     elif result != label:
-        add_to_spam(sms, sms_dict)
+        print('fail')
+        add_to_spam(sms)
 
 
-def check(sms:str, label:str):
-    tru_label = string(label)
+def check(sms, label):
     message_list, message_dict = compare_to_words(sms)
     result = is_spam_or_not(message_list, message_dict)
-    right_or_wrong(message_list, message_dict, result, tru_label)
+    right_or_wrong(message_list, result, label)
 
 
-def check_again(sms:str, label:str):
+def check_again(sms, label):
     message_list, message_dict = compare_to_words(sms)
-    is_spam_or_not(message_list, message_dict)
+    result = is_spam_or_not(message_list, message_dict)
+    right_or_wrong(message_list, result, label)
