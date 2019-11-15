@@ -179,7 +179,7 @@ def spam_or_ham(sms:list, sms_dict:dict):
     for key in sms_dict:
         word = key
         ham_val += sms_dict[word]['ham']
-    if spam_val >= ham_val:
+    if spam_val > ham_val:
         print('spam')
         add_to_spam(sms, sms_dict)
     elif ham_val > spam_val:

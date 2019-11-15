@@ -23,8 +23,10 @@ def is_spam_or_not(message:list, message_dict:dict):
     if spam_num >= ((len(message)/2) * 10):
         add_to_spam(message)
         print('spam')
+        return('spam')
     else:
-        print('not spam')
+        return('ham')
+        return('ham')
 
 def add_to_spam(spam:list):
     """
@@ -42,7 +44,6 @@ def add_to_spam(spam:list):
             SPAM_DICT[i] = new_val 
         else:
             SPAM_DICT[word] = 0 #previously at 1 now at 0 idk
-
 
 def compare_to_words(message:str):
     """
@@ -66,12 +67,22 @@ def compare_to_words(message:str):
             pass
     return message_list, message_dict
 
+def right_or_wrong(sms:list, sms_dict:dict, result:str, laber:str):
+    """
+    """
+    if result == label:
+        pass
+    elif result != label:
+        add_to_spam(sms, sms_dict)
 
-def check(sms):
+
+def check(sms:str, label:str):
+    tru_label = string(label)
+    message_list, message_dict = compare_to_words(sms)
+    result = is_spam_or_not(message_list, message_dict)
+    right_or_wrong(message_list, message_dict, result, tru_label)
+
+
+def check_again(sms:str, label:str):
     message_list, message_dict = compare_to_words(sms)
     is_spam_or_not(message_list, message_dict)
-
-# text = 'hey are you free tomorrow'
-# sms = 'you won free money try out claim prize get free you eligable'
-
-# check(text)
