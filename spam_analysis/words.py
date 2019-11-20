@@ -66,18 +66,32 @@ def compare_to_words(message:str):
             pass
     return message_list, message_dict
 
-def right_or_wrong(sms:list, result:str, label:str):
-    """
-    This function takes in the message, result of my function,
-    and real label of the function. If the result matches the 
-    labe everything is cood. If the result does not match the
-    """
-    if result == label:
-        print('correct')
-    elif result != label:
-        print('fail')
-        add_to_spam(sms)
+# def right_or_wrong(sms:list, result:str, label:str):
+#     """
+#     This function takes in the message, result of my function,
+#     and real label of the function. If the result matches the 
+#     labe everything is cood. If the result does not match the
+#     """
+#     if result == label:
+#         print('correct')
+#     elif result != label:
+#         print('fail')
+#         add_to_spam(sms)
 
+
+def crate_dict(sms:str):
+    """
+    This function takes in a string as its argument and creates
+    a nested dictionary with a word as its key and a dictonary 
+    with keys set as spam and ham as keys and values set to 0
+    """
+    sms = sms.split()
+    sms = list(sms)
+    sms_dict = {}
+    for i in range(len(sms)):
+        word = sms[i]
+        sms_dict[word] = {'spam' : int(0), 'ham' : int(0)}
+    return sms, sms_dict
 
 def check(sms, label):
     message_list, message_dict = compare_to_words(sms)
