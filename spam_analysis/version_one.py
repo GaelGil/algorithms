@@ -30,7 +30,7 @@ SPAM_DICT = {
 }
 
 
-def add_to_spam(sms:list, sms_dict:dict):
+def add_to_spam(sms:list):
     """
     If the message is spam it'll append the words
     from the message to a dict. If words are alredy
@@ -48,6 +48,19 @@ def add_to_spam(sms:list, sms_dict:dict):
             SPAM_DICT[word] = 0 
 
 
+def right_or_wrong(sms:list, result:str, label:str):
+    """
+    This function takes in the message, result of my function,
+    and real label of the function. If the result matches the 
+    labe everything is cool. If the result does not match the
+    """
+    if result == label:
+        pass
+        # print('correct')
+    elif result != label:
+        # print('fail')
+        add_to_spam(sms)
+
 def spam_or_ham(sms:list, sms_dict:dict):
     """
     This function takes in a list and a dict as its argument.
@@ -59,15 +72,19 @@ def spam_or_ham(sms:list, sms_dict:dict):
     ham_val = 0
     for key in sms_dict:
         word = key
-        spam_val += sms_dict[word]['spam']
+        nested_spam_val = sms_dict[word]['spam']
+        spam_val += nested_spam_val
     for key in sms_dict:
         word = key
-        ham_val += sms_dict[word]['ham']
+        nested_ham_val = sms_dict[word]['ham']
+        ham_val += nested_ham_val
     if spam_val > ham_val:
-        print('spam')
+        # print('spam')
+        return('spam')
         add_to_spam(sms, sms_dict)
     elif ham_val > spam_val:
-        print('ham')
+        # print('ham')
+        return('ham')
     else:
         pass
 
@@ -107,7 +124,19 @@ def crate_dict(sms:str):
     return sms, sms_dict
 
 
+def take_some_vals(sms:str, label:str):
+    """
+    This function is the same as the check function
+    except it doest not return anything. It's just to
+    populate the dict with some values
+    """
+    sms_list, sms_dict = crate_dict(sms)
+    message_list, message_dict = compare_to_dict(sms_list, sms_dict)
+    result = spam_or_ham(message_list, message_dict)
+    right_or_wrong(sms_list, result, label)
+
 def main_func(message):
     sms_list, sms_dict = crate_dict(message)
-    message_list, message_dict = compare_to_words(sms_list, sms_dict)
-    spam_or_ham(message_list, message_dict)
+    message_list, message_dict = compare_to_dict(sms_list, sms_dict)
+    result = spam_or_ham(message_list, message_dict)
+    return result

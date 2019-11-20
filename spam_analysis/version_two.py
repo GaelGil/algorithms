@@ -7,6 +7,9 @@ SPAM_DICT = {
     'get free' : {'spam' : int(0), 'ham' : int(0)},
     'you aligble': {'spam' : int(0), 'ham' : int(0)},
     }
+#AVG_LENGTH = 0
+#OTHER VALS
+
 
 def add_to_spam(spam:list):
     """
@@ -26,22 +29,44 @@ def add_to_spam(spam:list):
             SPAM_DICT[bigram] = 0 
 
 
-def is_spam_or_not(message:list, message_dict:dict):
+def right_or_wrong(sms:list, result:str, label:str):
     """
-    This function detemines if message is spam or 
-    not based on ...
+    This function takes in the message, result of my function,
+    and real label of the function. If the result matches the 
+    labe everything is cool. If the result does not match the
     """
-    spam_num = 0
-    for val in message_dict.values():
-        spam_num += val
-    # print(spam_num)
-    if spam_num >= ((len(message)/2) * 10):
-        add_to_spam(message)
-        print('spam')
-        return ('spam')
+    if result == label:
+        pass
+        # print('correct')
+    elif result != label:
+        # print('fail')
+        add_to_spam(sms)
+
+
+def spam_or_ham(sms:list, sms_dict:dict):
+    """
+    This function takes in a list and a dict as its argument.
+    We first loop through our dictionary and add up all the 
+    values of spam and ham. In the end we compare which value
+    is greater to decied weather if the message is spam or not. 
+    """
+    spam_val = 0 
+    ham_val = 0
+    for key in sms_dict:
+        word = key
+        spam_val += sms_dict[word]['spam']
+    for key in sms_dict:
+        word = key
+        ham_val += sms_dict[word]['ham']
+    if spam_val > ham_val:
+        # print('spam')
+        return('spam')
+        add_to_spam(sms, sms_dict)
+    elif ham_val > spam_val:
+        # print('ham')
+        return('ham')
     else:
-        print('ham')
-        return ('ham')
+        pass
 
 
 def compare_to_dict(message:list, phrases:dict):
@@ -79,7 +104,22 @@ def get_bigrams(message:str):
     return words_list, phrases_dict
 
 
+def take_some_vals(sms:str, label:str):
+    """
+    This function is the same as the check function
+    except it doest not return anything. It's just to
+    populate the dict with some things
+    """
+    bigrams_list, bigrams_dict = get_bigrams(sms)
+    message, bigrams_dict = compare_to_dict(bigrams_list, bigrams_dict)
+    result = is_spam_or_not(message, bigrams_dict)
+    right_or_wrong(bigrams_list, result, label)
+
+
 def check(sms):
     words_list, phrases_dict = get_bigrams(sms)
-    message, phrases_dict = compare_to_phrases(words_list, phrases_dict)
-    is_spam_or_not(message, phrases_dict)
+    message, phrases_dict = compare_to_dict(words_list, phrases_dict)
+    result = is_spam_or_not(message, phrases_dict)
+    return result
+
+
