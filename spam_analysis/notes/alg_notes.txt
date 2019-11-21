@@ -26,7 +26,12 @@
 #are meaning the first couple of times it would mostlikely fail. 
 
 
-
+###### 11/21/19
+Since I have I have nested dictonaries for both spam
+words and the sms itself. When I compare the sms to 
+the spam likely words I can only append words of the
+sms that I have labeled as spam. 
+######
 
 # not_spam = "Are you free for dinner?"
 # spam = "Do you want free stuff?"
