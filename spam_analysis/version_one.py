@@ -61,6 +61,7 @@ def right_or_wrong(sms:list, result:str, label:str):
         # print('fail')
         add_to_spam(sms)
 
+
 def spam_or_ham(sms:list, sms_dict:dict):
     """
     This function takes in a list and a dict as its argument.
@@ -120,6 +121,7 @@ def crate_dict(sms:str):
     sms_dict = {}
     for i in range(len(sms)):
         word = sms[i]
+        # TODO: make this a defaultdict
         sms_dict[word] = {'spam' : int(0), 'ham' : int(0)}
     return sms, sms_dict
 
@@ -134,6 +136,7 @@ def take_some_vals(sms:str, label:str):
     message_list, message_dict = compare_to_dict(sms_list, sms_dict)
     result = spam_or_ham(message_list, message_dict)
     right_or_wrong(sms_list, result, label)
+
 
 def main_func(message):
     sms_list, sms_dict = crate_dict(message)
