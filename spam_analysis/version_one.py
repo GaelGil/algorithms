@@ -30,7 +30,7 @@ SPAM_DICT = {
 }
 
 
-def add_to_spam(sms:list):
+def add_everything(sms:list):
     """
     If the message is spam it'll append the words
     from the message to a dict. If words are alredy
@@ -41,11 +41,32 @@ def add_to_spam(sms:list):
     for i in range(len(sms)):
         word = sms[i]
         if word in SPAM_DICT:
-            previous_val = SPAM_DICT.get(word)
+            previous_val = SPAM_DICT.get[word]['spam']
             new_val = previous_val + 5
             SPAM_DICT[i] = new_val 
         else:
             SPAM_DICT[word] = 0 
+
+
+def add_to_spam(sms_dict:dict):
+    """
+    This function checks if in the nested dictionaries
+    the word was set to spam or ham if it is spam we 
+    add it to a list and if its not we dont. In the end
+    the function returns a list of spam words
+    """
+    spam_list = []
+    for key in sms_dict:
+        word = key
+        spam_val = sms_dict.get(key)['spam']
+        if spam_val >= 1:
+            spam_list.append(word)
+    for key in sms_dict:
+        word = key
+        ham_val = sms_dict.get(word)['ham']
+        if spam_val == 0:
+            pass
+    return spam_list
 
 
 def right_or_wrong(sms:list, result:str, label:str):
@@ -59,7 +80,7 @@ def right_or_wrong(sms:list, result:str, label:str):
         # print('correct')
     elif result != label:
         # print('fail')
-        add_to_spam(sms)
+        return ('incorrect')
 
 
 def spam_or_ham(sms:list, sms_dict:dict):
@@ -80,11 +101,9 @@ def spam_or_ham(sms:list, sms_dict:dict):
         nested_ham_val = sms_dict[word]['ham']
         ham_val += nested_ham_val
     if spam_val > ham_val:
-        # print('spam')
         return('spam')
         add_to_spam(sms, sms_dict)
     elif ham_val > spam_val:
-        # print('ham')
         return('ham')
     else:
         pass
@@ -101,10 +120,10 @@ def compare_to_dict(sms:list, sms_dict:dict):
     for key in sms_dict:
         word = key
         if word in SPAM_DICT:
-            val = SPAM_DICT.get(key)
+            val = sms_dict[word]['spam']
             sms_dict[key]['spam'] = val
         elif word not in SPAM_DICT:
-            sms_dict[key]['ham'] = 1
+            sms_dict[key]['ham'] = int(0)
         else:
             pass
     return sms, sms_dict 
@@ -135,11 +154,23 @@ def take_some_vals(sms:str, label:str):
     sms_list, sms_dict = crate_dict(sms)
     message_list, message_dict = compare_to_dict(sms_list, sms_dict)
     result = spam_or_ham(message_list, message_dict)
-    right_or_wrong(sms_list, result, label)
+    t_or_f = right_or_wrong(message_list, result, label)
+    if t_or_f == 'incorrect':
+        add_everything(message_list)
 
 
 def main_func(message):
     sms_list, sms_dict = crate_dict(message)
     message_list, message_dict = compare_to_dict(sms_list, sms_dict)
     result = spam_or_ham(message_list, message_dict)
+    add_to_spam(message_dict)
     return result
+
+
+
+
+# sms = 'you won fre mon try cla pri get eli For ur cha to win a £25 wkl sho'
+# sms = list(sms)
+
+
+# compare_to_dict(sms, SPAM_DICT)

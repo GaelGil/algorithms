@@ -30,19 +30,25 @@ def multi(sms:str):
     my_dict = {}
     for i in range(len(sms)):
         word = sms[i]
-        my_dict[word] = {'spam' : int(0), 'ham' : int(0)}
+        my_dict[word] = {'spam' : int(3), 'ham' : int(2)}
     # print(my_dict)
     # print(' ')
     # my_dict['my']['spam'] = 1
     # print(my_dict)
     # print(my_dict['my']['spam'])
     nested_val = my_dict['my']['spam']
-    val = 0
+    print(type(nested_val))
+    val = 1
     print(val) 
     val += nested_val
     print(val)
     print(nested_val)
+    print('  ')
+    val = my_dict.get('my')['spam']
+    my_dict
+    print(val)
             # nested_spam_val = sms_dict[word]['spam']
+    
 
 
 
