@@ -1,39 +1,39 @@
 SPAM_DICT = {
-    'you' : {'spam' : int(0), 'ham' : int(0)},
-    'won' : {'spam' : int(0), 'ham' : int(0)},
-    'free' : {'spam' : int(0), 'ham' : int(0)},
-    'money' : {'spam' : int(0), 'ham' : int(0)},
-    'try' : {'spam' : int(0), 'ham' : int(0)},
-    'claim' : {'spam' : int(0), 'ham' : int(0)},
-    'prize' : {'spam' : int(0), 'ham' : int(0)},
-    'get' : {'spam' : int(0), 'ham' : int(0)},
-    'eligable': {'spam' : int(0), 'ham' : int(0)},
-    'For': {'spam' : int(0), 'ham' : int(0)},
-    'ur' :{'spam' : int(0), 'ham' : int(0)}, 
-    'chance' :{'spam' : int(0), 'ham' : int(0)},
-    'to' :{'spam' : int(0), 'ham' : int(0)},
-    'win' :{'spam' : int(0), 'ham' : int(0)},
-    'a':{'spam' : int(0), 'ham' : int(0)},
-    '£250':{'spam' : int(0), 'ham' : int(0)},
-    'wkly':{'spam' : int(0), 'ham' : int(0)},
-    'shopping':{'spam' : int(0), 'ham' : int(0)},
-    'spree':{'spam' : int(0), 'ham' : int(0)}, 
-    'TXT:' :{'spam' : int(0), 'ham' : int(0)}, 
-    'SHOP' :{'spam' : int(0), 'ham' : int(0)}, 
-    'to':{'spam' : int(0), 'ham' : int(0)}, 
-    '80878.':{'spam' : int(0), 'ham' : int(0)}, 
-    'Ts&Cs':{'spam' : int(0), 'ham' : int(0)}, 
-    'www.txt-2-shop.com':{'spam' : int(0), 'ham' : int(0)}, 
-    'custcare':{'spam' : int(0), 'ham' : int(0)}, 
-    '08715705022,':{'spam' : int(0), 'ham' : int(0)}, 
-    '1x150p/wk':{'spam' : int(0), 'ham' : int(0)},
-    'Go': {'spam': 0, 'ham': 0}, 
-    'until': {'spam': 2, 'ham': 0},
-     'jurong': {'spam': 0, 'ham': 0},
-      'point,': {'spam': 0, 'ham': 0}, 
-      'crazy..': {'spam': 3, 'ham': 0}, 
-    'Available': {'spam': 0, 'ham': 0}, 
-    'only': {'spam': 0, 'ham': 0}
+    'you' : {'spam' : int(1), 'ham' : int(0)},
+    'won' : {'spam' : int(1), 'ham' : int(0)},
+    'free' : {'spam' : int(1), 'ham' : int(0)},
+    'money' : {'spam' : int(1), 'ham' : int(0)},
+    'try' : {'spam' : int(1), 'ham' : int(0)},
+    'claim' : {'spam' : int(1), 'ham' : int(0)},
+    'prize' : {'spam' : int(1), 'ham' : int(0)},
+    'get' : {'spam' : int(1), 'ham' : int(0)},
+    'eligable': {'spam' : int(1), 'ham' : int(0)},
+    'For': {'spam' : int(1), 'ham' : int(0)},
+    'ur' :{'spam' : int(1), 'ham' : int(0)}, 
+    'chance' :{'spam' : int(1), 'ham' : int(0)},
+    'to' :{'spam' : int(1), 'ham' : int(0)},
+    'win' :{'spam' : int(1), 'ham' : int(0)},
+    'a':{'spam' : int(1), 'ham' : int(0)},
+    '£250':{'spam' : int(1), 'ham' : int(0)},
+    'wkly':{'spam' : int(1), 'ham' : int(0)},
+    'shopping':{'spam' : int(1), 'ham' : int(0)},
+    'spree':{'spam' : int(1), 'ham' : int(0)}, 
+    'TXT:' :{'spam' : int(1), 'ham' : int(0)}, 
+    'SHOP' :{'spam' : int(1), 'ham' : int(0)}, 
+    'to':{'spam' : int(1), 'ham' : int(0)}, 
+    '80878.':{'spam' : int(1), 'ham' : int(0)}, 
+    'Ts&Cs':{'spam' : int(1), 'ham' : int(0)}, 
+    'www.txt-2-shop.com':{'spam' : int(1), 'ham' : int(0)}, 
+    'custcare':{'spam' : int(1), 'ham' : int(0)}, 
+    '08715705022,':{'spam' : int(1), 'ham' : int(0)}, 
+    '1x150p/wk':{'spam' : int(1), 'ham' : int(0)},
+    'Go': {'spam': 1, 'ham': 0}, 
+    'until': {'spam': 1, 'ham': 0},
+     'jurong': {'spam': 1, 'ham': 0},
+      'point,': {'spam': 1, 'ham': 0}, 
+      'crazy..': {'spam': 1, 'ham': 0}, 
+    'Available': {'spam': 1, 'ham': 0}, 
+    'only': {'spam': 1, 'ham': 0}
 }
 
 
@@ -73,6 +73,8 @@ def add_to_spam(sms_dict:dict):
         ham_val = sms_dict[word]['ham']
         if spam_val == 0:
             pass
+    # print('SPAM LIST######')
+    # print(spam_list)
     return spam_list
 
 
@@ -95,6 +97,7 @@ def spam_or_ham(sms:list, sms_dict:dict):
     values of spam and ham. In the end we compare which value
     is greater to decied weather if the message is spam or not. 
     """
+    #Find a way to conncet for loops
     spam_val = 0 
     ham_val = 0
     for key in sms_dict:
@@ -104,13 +107,17 @@ def spam_or_ham(sms:list, sms_dict:dict):
     for key in sms_dict:
         word = key
         nested_ham_val = sms_dict[word]['ham']
-        ham_val += nested_ham_val
+        if nested_ham_val == 0:
+            ham_val += 1
+    print('SPAM VAL') 
+    print(spam_val)
+    print('    ')
+    print('HAM_VAL')
+    print(ham_val)
     if spam_val > ham_val:
         return('spam')
     elif ham_val > spam_val:
         return('ham')
-    else:
-        pass
 
 
 def compare_to_dict(sms:list, sms_dict:dict):
@@ -130,6 +137,9 @@ def compare_to_dict(sms:list, sms_dict:dict):
             sms_dict[key]['ham'] = int(0)
         else:
             pass
+    # print('AFTER COMPARISON')
+    # print(sms)
+    # print(sms_dict)
     return sms, sms_dict 
 
 
@@ -146,6 +156,8 @@ def crate_dict(sms:str):
         word = sms[i]
         # TODO: make this a defaultdict
         sms_dict[word] = {'spam' : int(0), 'ham' : int(0)}
+    # print('ORIGINAL SMS AS LIST AND DICT')
+    # print(sms, sms_dict)
     return sms, sms_dict
 
 
@@ -167,3 +179,13 @@ def main_func(message):
     add_to_spam(message_dict)
     return result
 
+
+###the issue is that 1 will always be greater than 0
+
+
+my_str = 'this should not be spam only'
+spam_str = 'you won free money'
+
+print(main_func(my_str))
+
+print(main_func(spam_str))
