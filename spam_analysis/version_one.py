@@ -97,23 +97,30 @@ def spam_or_ham(sms:list, sms_dict:dict):
     values of spam and ham. In the end we compare which value
     is greater to decied weather if the message is spam or not. 
     """
-    #Find a way to conncet for loops
     spam_val = 0 
     ham_val = 0
+    # for key in sms_dict:
+    #     word = key
+    #     nested_spam_val = sms_dict[word]['spam']
+    #     spam_val += nested_spam_val
+    # for key in sms_dict:
+    #     word = key
+    #     nested_ham_val = sms_dict[word]['ham']
+    #     if nested_ham_val == 0:
+    #         ham_val += 1
     for key in sms_dict:
         word = key
         nested_spam_val = sms_dict[word]['spam']
-        spam_val += nested_spam_val
-    for key in sms_dict:
-        word = key
         nested_ham_val = sms_dict[word]['ham']
-        if nested_ham_val == 0:
+        if nested_ham_val == 1 and nested_spam_val == 0:
             ham_val += 1
-    print('SPAM VAL') 
-    print(spam_val)
-    print('    ')
-    print('HAM_VAL')
-    print(ham_val)
+        elif nested_ham_val == 0 and nested_spam_val == 1:
+            spam_val += 1
+    # print('SPAM VAL') 
+    # print(spam_val)
+    # print('    ')
+    # print('HAM_VAL')
+    # print(ham_val)
     if spam_val > ham_val:
         return('spam')
     elif ham_val > spam_val:
@@ -134,7 +141,7 @@ def compare_to_dict(sms:list, sms_dict:dict):
             val = SPAM_DICT[word]['spam']
             sms_dict[key]['spam'] = val
         elif word not in SPAM_DICT:
-            sms_dict[key]['ham'] = int(0)
+            sms_dict[key]['ham'] = int(1)
         else:
             pass
     # print('AFTER COMPARISON')
