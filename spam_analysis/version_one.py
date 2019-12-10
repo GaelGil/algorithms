@@ -168,15 +168,16 @@ def crate_dict(sms:str):
     return sms, sms_dict
 
 
-def take_some_vals(sms:str):
+def take_some_vals(sms:str, label:str):
     """
     This function is the same as the check function
     except it doest not return anything. It's just to
     populate the dict with some values
     """
-    sms = sms.split()
-    sms = list(sms)
-    add_everything(sms)
+    if label == 'spam':
+        sms = sms.split()
+        sms = list(sms)
+        add_everything(sms)
 
 
 def main_func(message):
@@ -190,9 +191,9 @@ def main_func(message):
 ###the issue is that 1 will always be greater than 0
 
 
-my_str = 'this should not be spam only'
-spam_str = 'you won free money'
+# my_str = 'this should not be spam only'
+# spam_str = 'you won free money'
 
-print(main_func(my_str))
+# print(main_func(my_str))
 
-print(main_func(spam_str))
+# print(main_func(spam_str))
