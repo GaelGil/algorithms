@@ -1,12 +1,11 @@
-# import pytest
-
-# from version_one import spam_or_ham, compare_to_dict, crate_dict, add_to_spam
+import pytest
+from .version_one import spam_or_ham, compare_to_dict, crate_dict, add_to_spam
 
 
 
 # @pytest.mark.parametrize('input, output', [
-#     ('God said! ', ['god', 'said']),
-#     ('1:2 And the earth was', ['and', 'the', 'earth', 'was']),
+#     ('God said', ['god', 'said']),
+#     ('And the earth was', ['And', 'the', 'earth', 'was']),
 #     ('without form, and void; and darkness', ['without', 'form', 'and', 'void', 'and', 'darkness']),
 #     ('was upon the face of the deep. And', ['was', 'upon', 'the', 'face', 'of', 'the', 'deep', 'and']), 
 #     ('the Spirit of God moved upon the face', ['the', 'spirit', 'of', 'god', 'moved', 'upon', 'the', 'face']),
@@ -17,14 +16,15 @@
 #     assert clean_data(input)[0] == output
 
 
-# def test_create_dict():
-#     # """
-#     # The function create_dict recives two values and creates a dictionary and returns that dictionary.
-#     # The test asserts that when we input 2 lists, our output is a dictionary with those words
-#     # """
-#     input_1 = ''
-#     output =  
-#     assert create_dict(input_1) ==  output
+def test_create_dict():
+    # """
+    # The function create_dict recives two values and creates a dictionary and returns that dictionary.
+    # The test asserts that when we input 2 lists, our output is a dictionary with those words
+    # """
+    input_1 = 'Even my brother is not like to speak with me. They treat me like aids patent.'
+    output_1 = ['Even', 'my', 'brother', 'is', 'not', 'like', 'to', 'speak', 'with', 'me.', 'They', 'treat', 'me', 'like', 'aids', 'patent.']
+    # output_2 = {'Even': {'spam': 0, 'ham': 0}, 'my': {'spam': 0, 'ham': 0}, 'brother': {'spam': 0, 'ham': 0}, 'is': {'spam': 0, 'ham': 0}, 'not': {'spam': 0, 'ham': 0}, 'like': {'spam': 0, 'ham': 0}, 'to': {'spam': 0, 'ham': 0}, 'speak': {'spam': 0, 'ham': 0}, 'with': {'spam': 0, 'ham': 0}, 'me.': {'spam': 0, 'ham': 0}, 'They': {'spam': 0, 'ham': 0}, 'treat': {'spam': 0, 'ham': 0}, 'me': {'spam': 0, 'ham': 0}, 'aids': {'spam': 0, 'ham': 0}, 'patent.': {'spam': 0, 'ham': 0}}
+    assert crate_dict(input_1) == output_1#, output_2
 
 
 # def test_create_sentence():

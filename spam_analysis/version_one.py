@@ -1,5 +1,4 @@
 SPAM_DICT = {
-    'you' : {'spam' : int(1), 'ham' : int(0)},
     'won' : {'spam' : int(1), 'ham' : int(0)},
     'free' : {'spam' : int(1), 'ham' : int(0)},
     'money' : {'spam' : int(1), 'ham' : int(0)},
@@ -52,7 +51,7 @@ def add_everything(sms:list):
             new_val = previous_val + 5
             SPAM_DICT[word]['spam'] = new_val
         else:
-            SPAM_DICT[word] = {'spam' : int(0), 'ham' : int(0)}
+            SPAM_DICT[word] = {'spam' : int(1), 'ham' : int(0)}
 
 
 def add_to_spam(sms_dict:dict):
@@ -121,7 +120,11 @@ def spam_or_ham(sms:list, sms_dict:dict):
     # print('    ')
     # print('HAM_VAL')
     # print(ham_val)
-    if spam_val > ham_val:
+    if spam_val >= ham_val:
+        return('spam')
+    elif spam_val > ham_val:
+        return('spam')
+    elif spam_val == ham_val:
         return('spam')
     elif ham_val > spam_val:
         return('ham')
@@ -164,7 +167,9 @@ def crate_dict(sms:str):
         # TODO: make this a defaultdict
         sms_dict[word] = {'spam' : int(0), 'ham' : int(0)}
     # print('ORIGINAL SMS AS LIST AND DICT')
-    # print(sms, sms_dict)
+    # print(sms)
+    # print(sms_dict)
+    # print(' ')
     return sms, sms_dict
 
 
@@ -184,16 +189,20 @@ def main_func(message):
     sms_list, sms_dict = crate_dict(message)
     message_list, message_dict = compare_to_dict(sms_list, sms_dict)
     result = spam_or_ham(message_list, message_dict)
-    add_to_spam(message_dict)
+    # spam_words = add_to_spam(message_dict)
+    # add_everything(spam_words)
     return result
 
 
 ###the issue is that 1 will always be greater than 0
 
+print(SPAM_DICT)
+my_str = 'this should not be spam only'
+spam_str = 'you won free money HELLL$$$$$$O'
 
-# my_str = 'this should not be spam only'
-# spam_str = 'you won free money'
+print(main_func(my_str))
 
-# print(main_func(my_str))
+print(main_func(spam_str))
 
-# print(main_func(spam_str))
+
+print(SPAM_DICT)
