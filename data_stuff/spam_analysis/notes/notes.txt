@@ -260,3 +260,41 @@ p_spam(free | documents)
 # def check_again(sms):
 #     message_list, message_dict = compare_to_words(sms)
 #     is_spam_or_not(message_list, message_dict)
+
+
+
+###########THIS USED TO BE get_probs_for_words
+
+
+    # words that aren't in PROBS dict
+    other_words = []
+
+    # dictionary with the probabilties or sms
+    probs_dict = {}
+    spam_prob = 0 
+    ham_prob = 0
+
+    for i in range(len(sms_list)):
+        word = sms_list[i]
+        word = str(word)
+        if word not in PROBS:
+            # If the word is not in the dictionary
+            # we ignore it for now
+            other_words.append(word)
+        else:
+            # get the occurance of word being in spam or ham
+            spam_prob = PROBS[word]['spam']
+            ham_prob = PROBS[word]['ham']
+
+            # all ocurrances of a word
+            word_prob = spam_prob+ham_prob
+
+            # probablity of word being spam or ham
+            spam = float(spam_prob/word_prob)
+            ham = float(ham_prob/word_prob)
+
+            # dictionay with word and spam and ham probability
+            probs_dict[word] = {'spam' : spam, 'ham' : ham}
+
+    return probs_dict, other_words
+
