@@ -10,31 +10,14 @@ def spam_or_ham(ham_val:int, spam_val:int, length_of_list:int, PROBS_HAM:float, 
     """
     ham = ham_val/length_of_list
     spam = spam_val/length_of_list
-    # prob_spam_sms = (spam * PROBS_SPAM)/(spam * PROBS_SPAM + ham * PROBS_HAM)
-    # prob_ham_sms = (ham * PROBS_HAM)/(ham * PROBS_HAM + spam * PROBS_SPAM)
-    print(' ')
-    prob_ham_sms = (ham * PROBS_HAM)
-    print('ham')
-    print(prob_ham_sms)
-    print(' ')
-    prob_spam_sms = (spam * PROBS_SPAM)
-    print('spam')
-    print(prob_spam_sms)
-
-    print(' ')
-    print('ham')
-    prob_ham_sms = (ham * PROBS_HAM + spam * PROBS_SPAM)
-    print(prob_ham_sms)
-    print(' ')
-    prob_spam_sms = (spam * PROBS_SPAM + ham * PROBS_HAM)
-    print('spam')
-    print(prob_spam_sms)
+    prob_spam_sms = (spam * PROBS_SPAM)/(spam * PROBS_SPAM + ham * PROBS_HAM)
+    prob_ham_sms = (ham * PROBS_HAM)/(ham * PROBS_HAM + spam * PROBS_SPAM)
     if prob_ham_sms > prob_spam_sms:
-        return('PREDICTED: HAM')
+        return('ham')
     elif prob_spam_sms > prob_ham_sms:
-        return('PREDICTED: SPAM')
+        return('spam')
     elif prob_ham_sms == prob_ham_sms:
-       return('PREDICTED: SPAM')
+       return('spam')
     else:
         pass    
 
@@ -61,8 +44,8 @@ def add_probabilites(sms_list:list, probs_dict:dict, PROBS_HAM:float, PROBS_SPAM
             spam_val +=1
         else:
             pass
-    print('VALS')
-    print(ham_val, spam_val, length_of_list)
+    # print('VALS')
+    # print(ham_val, spam_val, length_of_list)
     return ham_val, spam_val, length_of_list
 
 
@@ -86,22 +69,22 @@ def get_probs_for_words(sms_list:list):
             # we ignore it for now
             other_words.append(word)
         else:
-            print(word)
+            # print(word)
             # get the occurance of word being in spam or ham
             spam_prob = PROBS[word]['spam']
             ham_prob = PROBS[word]['ham']
-            # all ocurrances of word
+            # all ocurrances of a word
             word_prob = spam_prob+ham_prob
             # probablity of word being spam or ham
             spam = float(spam_prob/word_prob)
             ham = float(ham_prob/word_prob)
-            print("HAMM")
-            print(ham_prob)
-            print("SPAM")
-            print(spam_prob)
+            # print("HAMM")
+            # print(ham_prob)
+            # print("SPAM")
+            # print(spam_prob)
             # dictionay with word and spam and ham probability
             probs_dict[word] = {'spam' : spam, 'ham' : ham}
-    print(probs_dict)
+    # print(probs_dict)
     return probs_dict, other_words
     
 
@@ -171,6 +154,8 @@ def train_func(label:str, sms:str):
 
 def test_func(sms:str, PROBS_HAM:float, PROBS_SPAM:float):
     sms_list = clean_string(sms)
+    if len(sms_list) == 0:
+        return 'ham'
     probs_dict, other_words = get_probs_for_words(sms_list)
     ham_val, spam_val, length_of_list = add_probabilites(sms_list, probs_dict, PROBS_HAM, PROBS_SPAM)
     result = spam_or_ham(ham_val, spam_val, length_of_list, PROBS_HAM, PROBS_SPAM)
