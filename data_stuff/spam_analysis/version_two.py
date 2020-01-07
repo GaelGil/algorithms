@@ -2,51 +2,6 @@ import re
 PROBS = {}
 
 
-
-
-
-def spam_or_ham(ham_val:int, spam_val:int, length_of_list:int, PROBS_HAM:float, PROBS_SPAM:float):
-    """
-    """
-    ham = ham_val/length_of_list
-    spam = spam_val/length_of_list
-    prob_spam_sms = (spam * PROBS_SPAM)/(spam * PROBS_SPAM + ham * PROBS_HAM)
-    prob_ham_sms = (ham * PROBS_HAM)/(ham * PROBS_HAM + spam * PROBS_SPAM)
-    if prob_ham_sms > prob_spam_sms:
-        return('ham')
-    elif prob_spam_sms > prob_ham_sms:
-        return('spam')
-    elif prob_ham_sms == prob_ham_sms:
-       return('spam')
-    else:
-        pass    
-
-
-def add_probabilites(sms_list:list, probs_dict:dict, PROBS_HAM:float, PROBS_SPAM:float):
-    """
-    """
-    spam_val = 0
-    ham_val = 0
-    length_of_list = len(sms_list)
-    for i in range(len(sms_list)):
-        word = sms_list[i]
-        spam = PROBS[word]['spam']
-        ham = PROBS[word]['ham']
-        prob_spam_word = (spam * PROBS_SPAM)/(spam * PROBS_SPAM + ham * PROBS_HAM)
-        prob_ham_word = (ham * PROBS_HAM)/(ham * PROBS_HAM + spam * PROBS_SPAM)
-        if prob_ham_word > prob_spam_word:
-            ham_val +=1
-        elif prob_spam_word > prob_ham_word:
-            spam_val += 1
-        elif prob_ham_word == prob_ham_word:
-            ham_val += 1
-            spam_val +=1
-        else:
-            pass
-
-    return ham_val, spam_val, length_of_list
-
-
 def get_probs_for_words(sms_list:list):
     """
     This function takes in the sms as a list so we can
@@ -193,15 +148,10 @@ def test_func(sms:str):
     if len(sms_list) == 0:
         return 'ham'
     result, other_words = get_probs_for_words(sms_list)
-    # ham_val, spam_val, length_of_list = add_probabilites(sms_list, probs_dict, PROBS_HAM, PROBS_SPAM)
-    # result = spam_or_ham(ham_val, spam_val, length_of_list, PROBS_HAM, PROBS_SPAM)
     if result == 'spam':
         for i in range(len(other_words)):
             word = other_words[i]
             PROBS[word] = {'spam' : int(1), 'ham' : int(1)}
     return result
 
-
-# for now all words will be atleast spam: 1, ham: 1
-# before it used to be spam: 1: ham: 0
 
