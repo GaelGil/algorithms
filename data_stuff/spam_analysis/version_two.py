@@ -63,8 +63,11 @@ def get_probs_for_words(sms_list:list):
         return ('spam', other_words)
 
 
-
 def get_p_of_label():
+    """
+    Since we are using naive bayes we have to get some 
+    probabilities to use in our equation
+    """
     total = 0
     spam = 0
     ham = 0
@@ -77,7 +80,7 @@ def get_p_of_label():
         total += one_prob+sec_prob
     return total, ham, spam
 
-#####FOR TRAINING DATA SET    
+#####This function is for setting the data into the probability dictionary   
 def assign_vals_to_words(label:str, sms_list:list):
     """
     This function takes in the label of the message and the
@@ -103,7 +106,7 @@ def assign_vals_to_words(label:str, sms_list:list):
         pass
 
 
-####FOR TRAINING DATA SET
+#####This function is for setting the data into the probability dictionary   
 def add_words_to_dict(sms_list:list):
     """
     This function takes in a list as its argument and with
@@ -126,12 +129,17 @@ def add_words_to_dict(sms_list:list):
 ####ALL DATA SETS
 def clean_string(sms:str) -> list:
     """
-    This function takes in a string as its argument and
-    removes some stuff and returns everything else as a
-    list
+    This function takes in a string as its argument and removes
+    some stuff such as !{}+()= etc. As well as setting all the 
+    words to lowercase. This will help us compare words only 
+    and allow the algorithm to prefer better by not getting 
+    distracted by irrelavent things. The function returns a list
+    of o cleaned lowercase words
     """
+    # remove stuff and numbers
     clean = re.sub(r'[\.!#%*()@,:/;"{}+=-]', ' ', sms)
     clean = re.sub(r'[0-9]', ' ', clean)
+    # turn string into list and set words to lowercase
     clean_sms = clean.split()
     clean_sms = [token.lower() for token in clean_sms] 
     return clean_sms
@@ -144,6 +152,13 @@ def train_func(label:str, sms:str):
 
 
 def test_func(sms:str):
+    """
+    This is the driver function for actually testing the algorithm.
+    What happens first is we send the message trough the function 
+    clean_string. This will return a list of words which if the 
+    length of that list is 0 or none we return ham. If it is not 
+    we keep going and 
+    """
     sms_list = clean_string(sms)
     if len(sms_list) == 0:
         return 'ham'

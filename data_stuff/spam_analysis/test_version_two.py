@@ -1,5 +1,5 @@
 import pytest
-from .version_one import spam_or_ham, compare_to_dict, crate_dict, add_to_spam
+from .version_two import spam_or_ham, compare_to_dict, crate_dict, add_to_spam
 
 
 
