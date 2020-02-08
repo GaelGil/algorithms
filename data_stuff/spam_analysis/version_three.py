@@ -2,22 +2,54 @@ import re
 PROBS = {}
 average_spam = 0
 
+
+
+
+# PROBS = {
+#     'won' : {'spam' : int(1), 'ham' : int(0)},
+#     'free' : {'spam' : int(1), 'ham' : int(0)},
+#     'money' : {'spam' : int(1), 'ham' : int(0)},
+#     'try' : {'spam' : int(1), 'ham' : int(0)},
+#     'claim' : {'spam' : int(1), 'ham' : int(0)},
+#     'prize' : {'spam' : int(1), 'ham' : int(0)},
+#     'get' : {'spam' : int(1), 'ham' : int(0)},
+#     'eligable': {'spam' : int(1), 'ham' : int(0)},
+#     'For': {'spam' : int(1), 'ham' : int(0)},
+#     'ur' :{'spam' : int(1), 'ham' : int(0)}, 
+#     'chance' :{'spam' : int(1), 'ham' : int(0)},
+#     'to' :{'spam' : int(1), 'ham' : int(0)},
+#     'win' :{'spam' : int(1), 'ham' : int(0)},
+#     'a':{'spam' : int(1), 'ham' : int(0)},
+#     '£250':{'spam' : int(1), 'ham' : int(0)},
+#     'wkly':{'spam' : int(1), 'ham' : int(0)},
+#     'shopping':{'spam' : int(1), 'ham' : int(0)},
+#     'spree':{'spam' : int(1), 'ham' : int(0)}, 
+#     'TXT:' :{'spam' : int(1), 'ham' : int(0)}, 
+#     'SHOP' :{'spam' : int(1), 'ham' : int(0)}, 
+#     'to':{'spam' : int(1), 'ham' : int(0)}, 
+#     '80878.':{'spam' : int(1), 'ham' : int(0)}, 
+#     'Ts&Cs':{'spam' : int(1), 'ham' : int(0)}, 
+#     'www.txt-2-shop.com':{'spam' : int(1), 'ham' : int(0)}, 
+#     'custcare':{'spam' : int(1), 'ham' : int(0)}, 
+#     '08715705022,':{'spam' : int(1), 'ham' : int(0)}, 
+#     '1x150p/wk':{'spam' : int(1), 'ham' : int(0)},
+#     'Go': {'spam': 1, 'ham': 0}, 
+#     'until': {'spam': 1, 'ham': 0},
+#      'jurong': {'spam': 1, 'ham': 0},
+#       'point,': {'spam': 1, 'ham': 0}, 
+#       'crazy..': {'spam': 1, 'ham': 0}, 
+#     'Available': {'spam': 1, 'ham': 0}, 
+#     'only': {'spam': 1, 'ham': 0}
+# }
+
+
+
+
 def get_probs_for_words(sms_list:list):
     """
     This function takes in the sms as a list so we can
     check their values in the dictionary. 
     """
-    # P(SPAM|word) = P(word|SPAM)*P(SPAM)/ P(word)
-
-    # # probability of word appearing spam
-    # P(word|SPAM)
-
-    # # probability of spam happening
-    # P(SPAM)
-
-    # # probability of word appearing at all
-    # P(word)
-    total, ham, spam = get_p_of_label()
     total_spam = 0
     total_ham = 0
     other_words = []
@@ -33,52 +65,24 @@ def get_probs_for_words(sms_list:list):
             spam_prob = PROBS[word]['spam']
             ham_prob = PROBS[word]['ham']
 
-            # P(word|label) 
-            prob_of_spam_word = spam_prob/spam 
-            prob_of_ham_word = ham_prob/ham
-
-            # P(label)
-            spam_label = spam/total
-            ham_label = ham/total
-
-            # all ocurrances of a word
-            # P(word)
-            word_prob = spam_prob+ham_prob
-            prob_of_spam = word_prob / total
-
-            result_spam = (((prob_of_spam_word)*(spam_label))/(word_prob))
-            result_ham = (((prob_of_ham_word)*(ham_label))/(word_prob))
-            if result_ham > result_spam:
+            if ham_prob > spam_prob:
                 total_ham +=1
-            elif result_ham < result_spam:
+            elif ham_prob < spam_prob:
                 total_spam +=1
-            elif result_ham == result_spam:
+            elif ham_prob == spam_prob:
                 total_spam +=1
                 total_ham +=1
+
     if total_ham > total_spam:
-        return ('ham', other_words)
+        return ('ham')
     elif total_ham < total_spam:
-        return('spam', other_words)
+        return('spam')
     elif total_ham == total_spam:
-        return ('spam', other_words)
+        return ('spam')
 
 
-def get_p_of_label():
-    """
-    Since we are using naive bayes we have to get some 
-    probabilities to use in our equation
-    """
-    total = 0
-    spam = 0
-    ham = 0
-    for key in PROBS:
-        word = key
-        one_prob = PROBS[word]['spam']
-        sec_prob = PROBS[word]['ham']
-        spam += one_prob
-        ham += sec_prob
-        total += one_prob+sec_prob
-    return total, ham, spam
+
+
 
 #####This function is for setting the data into the probability dictionary   
 def assign_vals_to_words(label:str, sms_list:list):
@@ -145,28 +149,15 @@ def clean_string(sms:str) -> list:
     return clean_sms
 
 
+
 def train_func(label:str, sms:str):
     sms_list = clean_string(sms)
     add_words_to_dict(sms_list)
     assign_vals_to_words(label, sms_list)
 
 
-def test_func(sms:str):
-    """
-    This is the driver function for actually testing the algorithm.
-    What happens first is we send the message trough the function 
-    clean_string. This will return a list of words which if the 
-    length of that list is 0 or none we return ham. If it is not 
-    we keep going and 
-    """
-    sms_list = clean_string(sms)
-    if len(sms_list) == 0:
-        return 'ham'
-    result, other_words = get_probs_for_words(sms_list)
-    if result == 'spam':
-        for i in range(len(other_words)):
-            word = other_words[i]
-            PROBS[word] = {'spam' : int(1), 'ham' : int(1)}
+def driver_func(sms):
+    message = clean_string(sms)
+    result = get_probs_for_words(message)
     return result
-
 

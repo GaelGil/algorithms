@@ -342,3 +342,33 @@ def add_probabilites(sms_list:list, probs_dict:dict, PROBS_HAM:float, PROBS_SPAM
 
     return ham_val, spam_val, length_of_list
 
+
+
+
+
+
+# def memorize_alg(thing_to_be_scored, training_dataset):
+#     """
+#     This algorithm takes the training data (which is the ONLY data we will have
+#     if we're data scientists) and splits the training data into two lists: a list
+#     of HAM messages and a list of SPAM messages. If `thing_to_be_scored` is in HAM,
+#     this function returns HAM. If `thing_to_be_scored` is in SPAM, this function returns
+#     SPAM. If `thing_to_be_scored` is is neither....
+#     """
+    
+#     """
+#     HINTS:
+#     normal the text: "Wanna hang out??"  -->  "wnn hng t"
+    
+#     def distance(txt_1, txt_2)
+    
+#         distance("whats up", "wha's upp") == 4
+#         distance("whats up", "buy free stuff") = 85
+        
+#         EDIT DISTANCE
+#     """
+    
+#     pass
+
+
+# memorize_alg_v1
