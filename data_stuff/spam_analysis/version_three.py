@@ -4,47 +4,6 @@ average_spam = 0
 
 
 
-
-# PROBS = {
-#     'won' : {'spam' : int(1), 'ham' : int(0)},
-#     'free' : {'spam' : int(1), 'ham' : int(0)},
-#     'money' : {'spam' : int(1), 'ham' : int(0)},
-#     'try' : {'spam' : int(1), 'ham' : int(0)},
-#     'claim' : {'spam' : int(1), 'ham' : int(0)},
-#     'prize' : {'spam' : int(1), 'ham' : int(0)},
-#     'get' : {'spam' : int(1), 'ham' : int(0)},
-#     'eligable': {'spam' : int(1), 'ham' : int(0)},
-#     'For': {'spam' : int(1), 'ham' : int(0)},
-#     'ur' :{'spam' : int(1), 'ham' : int(0)}, 
-#     'chance' :{'spam' : int(1), 'ham' : int(0)},
-#     'to' :{'spam' : int(1), 'ham' : int(0)},
-#     'win' :{'spam' : int(1), 'ham' : int(0)},
-#     'a':{'spam' : int(1), 'ham' : int(0)},
-#     '£250':{'spam' : int(1), 'ham' : int(0)},
-#     'wkly':{'spam' : int(1), 'ham' : int(0)},
-#     'shopping':{'spam' : int(1), 'ham' : int(0)},
-#     'spree':{'spam' : int(1), 'ham' : int(0)}, 
-#     'TXT:' :{'spam' : int(1), 'ham' : int(0)}, 
-#     'SHOP' :{'spam' : int(1), 'ham' : int(0)}, 
-#     'to':{'spam' : int(1), 'ham' : int(0)}, 
-#     '80878.':{'spam' : int(1), 'ham' : int(0)}, 
-#     'Ts&Cs':{'spam' : int(1), 'ham' : int(0)}, 
-#     'www.txt-2-shop.com':{'spam' : int(1), 'ham' : int(0)}, 
-#     'custcare':{'spam' : int(1), 'ham' : int(0)}, 
-#     '08715705022,':{'spam' : int(1), 'ham' : int(0)}, 
-#     '1x150p/wk':{'spam' : int(1), 'ham' : int(0)},
-#     'Go': {'spam': 1, 'ham': 0}, 
-#     'until': {'spam': 1, 'ham': 0},
-#      'jurong': {'spam': 1, 'ham': 0},
-#       'point,': {'spam': 1, 'ham': 0}, 
-#       'crazy..': {'spam': 1, 'ham': 0}, 
-#     'Available': {'spam': 1, 'ham': 0}, 
-#     'only': {'spam': 1, 'ham': 0}
-# }
-
-
-
-
 def get_probs_for_words(sms_list:list):
     """
     This function takes in the sms as a list so we can
@@ -65,20 +24,24 @@ def get_probs_for_words(sms_list:list):
             spam_prob = PROBS[word]['spam']
             ham_prob = PROBS[word]['ham']
 
-            if ham_prob > spam_prob:
+            if ham_prob == spam_prob:
+                total_spam +=1
+                total_ham +=1
+            elif ham_prob > spam_prob:
                 total_ham +=1
             elif ham_prob < spam_prob:
                 total_spam +=1
-            elif ham_prob == spam_prob:
-                total_spam +=1
-                total_ham +=1
 
-    if total_ham > total_spam:
-        return ('ham')
+    if total_ham == total_spam:
+        return('spam')
     elif total_ham < total_spam:
         return('spam')
-    elif total_ham == total_spam:
-        return ('spam')
+    elif total_ham-5 <= total_spam:
+        return('spam')
+    elif total_spam > (len(sms_list)/2):
+        return('spam')
+    else:
+        return('ham')
 
 
 
