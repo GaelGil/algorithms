@@ -161,17 +161,42 @@ def get_probs_for_words(sms_list:list):
             elif ham_prob < spam_prob:
                 total_spam +=1
 
+    return (total_ham, total_spam)
+
+def predict(sms_list:list):
+    """
+    This function takes in the sms as a list so we can
+    check their values in the dictionary. 
+    """
+    total_spam = 0
+    total_ham = 0
+    other_words = []
+    for i in range(len(sms_list)):
+        word = sms_list[i]
+        word = str(word)
+        if word not in PROBS:
+            # If the word is not in the dictionary
+            # we ignore it for now
+            other_words.append(word)
+        else:
+            # get values or words
+            spam_prob = PROBS[word]['spam']
+            ham_prob = PROBS[word]['ham']
+
+            if ham_prob == spam_prob:
+                total_spam +=1
+                total_ham +=1
+            elif ham_prob > spam_prob:
+                total_ham +=1
+            elif ham_prob < spam_prob:
+                total_spam +=1
+
     if total_ham == total_spam:
         return('spam')
-    elif total_ham < total_spam:
-        return('spam')
-    elif total_ham-5 <= total_spam:
-        return('spam')
-    elif total_spam > (len(sms_list)/2):
+    elif total_spam >= 5:
         return('spam')
     else:
         return('ham')
-
 
 
 
@@ -261,12 +286,12 @@ def train_func(label:str, sms:str):
 def driver_func(sms):
     message = clean_string(sms)
     clean_sms = remove_stop_words(message)
-    result = get_probs_for_words(clean_sms)
+    ham, spam = get_probs_for_words(clean_sms)
+    return (ham, spam)
+
+
+def test_func(sms):
+    message = clean_string(sms)
+    clean_sms = remove_stop_words(message)
+    result = predict(clean_sms)
     return result
-
-
-
-
-# mi_string = ['this', 'is', 'free', 'mi', 'red']
-
-# print(remove_stop_words(mi_string))
