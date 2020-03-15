@@ -295,3 +295,6 @@ def test_func(sms):
     clean_sms = remove_stop_words(message)
     result = predict(clean_sms)
     return result
+
+def get_dict():
+    print(PROBS)
