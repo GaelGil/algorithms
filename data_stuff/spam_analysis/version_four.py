@@ -298,3 +298,7 @@ def test_func(sms):
 
 def get_dict():
     print(PROBS)
+
+
+def get_sms(sms):
+    print(sms)
