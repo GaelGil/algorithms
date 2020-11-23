@@ -1,8 +1,7 @@
 from collections import deque
 
-balancedString = 'Im Cameron (Im 28 (and thats not old)).'
-notBalancedString = 'Im Cameron (Im 28 (and thats not old).'
-randString = '(((( ))'
+
+someStrings = ['Im Cameron (Im 28 (and thats not old)).', 'Im Cameron (Im 28 (and thats not old).', '(((( ))', '(', '( )', 'no parenthesis']
 
 def validator(aString:str):
     """
@@ -27,6 +26,9 @@ def validator(aString:str):
         if aString[i] == ("(") or aString[i] == (")"):
             stack.append(aString[i])
             cleanString.append(aString[i])
+    
+    if not cleanString:
+        return False
 
     x = 0
     while (x < len(cleanString)):
@@ -39,6 +41,6 @@ def validator(aString:str):
 
 
 
-print(validator(balancedString))
-print(validator(notBalancedString))
-print(validator(randString))
+
+for i in range(len(someStrings)):
+    print(validator(someStrings[i]))
