@@ -9,9 +9,6 @@ def rollDiceThreeTimes():
     numOne = random.choice(DICE)
     numTwo = random.choice(DICE)
     numThree = random.choice(DICE)
-    print(numOne)
-    print(numTwo)
-    print(numThree)
     return 0
     
 rollDiceThreeTimes()
@@ -41,19 +38,17 @@ def probability_of_sum(n, k, bootstrap=10000):
     (repeated random sampling) to get an approximate answer. The higher
     the bootstrap value, the more accurate the estimate will be.
     """
-    print("here")
     results = []
-    for i in range(bootstrap):
+    for i in range(n):
         total = 0
         numOne, numTwo = rollDice()
         total += numOne
         total += numTwo
         results.append(total)
         
-
     kOrAbove = [i for i in results if i >= k]
 
-    return kOrAbove
+    return (len(kOrAbove)/n)
 
 
 
@@ -74,6 +69,26 @@ def binomial_probability(n, k, p):
     different. Also, notice that the probability of getting exactly one
     head is p(HT) + p(TH) = 0.25 + 0.25 = 0.5.
     """
+
+    probabilitiesDict = {} # {sum: probOfSum}
+    totalSums = 0
+    for i in range(len(DICE)):
+        current = DICE[i]
+        for j in range(len(DICE)):
+            sum = current + DICE[j]
+            if sum in probabilitiesDict:
+                probabilitiesDict[sum] += 1
+            else: 
+                probabilitiesDict[sum] = 1
+            totalSums +=1
+
+
+    print(probabilitiesDict)
+    print(totalSums)
+
     return 0
 
-print(len(probability_of_sum(1000, 8))/1000)
+
+
+print(probability_of_sum(10000, 10))
+binomial_probability(0, 0, 0)
