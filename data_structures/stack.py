@@ -5,38 +5,48 @@ class Node:
 
 
 class Stack:
-    def __init__(self):
-        self.top = Node()
+    def __init__(self,d=0):
+        self.top = Node(d)
     
-    def add_to_top(self, d):
+    def add(self, d):
         """
         This function will add to the top of a stack. 
         """
+        # create new node
         new_node = Node(d)
-        self.top.next = new_node
+        # set new_node.next to point to old top
         new_node.next = self.top
+        # update the new top
         self.top = new_node
         return 0
         
 
-    def remove_top(self):
+    def remove(self):
         """
         This function will remove from the top. 
         """
-        print(self.top.next.val)
-        
+        self.top = self.top.next
         return 0
 
+    def is_empty(self):
+        return self.top == None
+
     def peek(self):
+        if self.is_empty():
+            return f'is empty'
         return self.top.val
 
 
-stack = Stack()
-stack.add_to_top(1)
-stack.add_to_top(2)
-stack.add_to_top(3)
-print(stack.peek())
+# initialize with 1 at bottom
+stack = Stack(1)
+stack.add(2)
+stack.add(3)
+stack.add(4)
+print(f'before removing: {stack.peek()}')
 
-stack.remove_top()
+stack.remove()
+
+print(f'after removing: {stack.peek()}')
+
 
 

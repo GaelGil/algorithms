@@ -83,12 +83,7 @@ class LinkedList():
         while True:
             prev_node = current
             current = current.next
-            print(f'prev: {prev_node.val}')
-            print(f'current: {current.val}')
-            print()
             if current_index == index:
-                print(f'prev.next: {prev_node.next.val}')
-                print(f'current.next: {current.next.val}')
                 prev_node.next = current.next
                 return
             current_index += 1
