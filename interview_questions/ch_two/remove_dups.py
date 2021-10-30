@@ -1,4 +1,3 @@
-from typing import Counter
 from node import List, Node
 
 def remove_dupes(list, head):
