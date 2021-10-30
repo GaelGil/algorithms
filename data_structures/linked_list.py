@@ -6,7 +6,7 @@ class Node:
 
 class LinkedList():
     def __init__(self):
-       self.head = Node()
+       self.head = None
 
     def add_to_tail(self, d):
         """
@@ -16,11 +16,14 @@ class LinkedList():
         the end. This takes O(N) time
         """
         new_node = Node(d)
+        if self.head == None:
+            self.head = new_node
+            return
         current = self.head
         while current.next != None:
             current = current.next
         current.next = new_node
-        return 0
+        return
 
     def length(self):
         """
@@ -28,76 +31,59 @@ class LinkedList():
         (not includin head). We loop through the whole list and we add
         to a counter `total`. Then at the end we return our `total`
         """
+        if self.head == None:
+            return f'Empty List'
+        # start at one for head (we can do this because we know head is not None)
+        counter = 1 
         current = self.head
-        total = 0
         while current.next != None:
             current = current.next
-            total +=1
-        return total
+            counter +=1
+        return counter
 
     def display(self):
         """
         This function will display all the elements in our list. 
         """
+        if self.head == None:
+            return f'Empty List'
         current = self.head
         elements = []
+        elements.append(current.val)
         while current.next != None:
             current = current.next
             elements.append(current.val)
         return elements
 
-
     def delete(self, index):
         """
-        This function will delete a element in our linked list given a
-        index. If the index is greter then the length of the list we 
-        return a message. If not we continue. We set a var `current`
-        equal to head and create a `current_index` at 0. We start to
-        loop through the list and create a `prev_node`. This node will
-        be the node before the `current`. Right after we do that we set
-        `curent` euqal to `current.next` as we move in the list. If our
-        `index` is equal to our `current_index`. We select the `prev_node.next`
-        and set that equal the the `current.next`. Here is an example
-
-        [1, 1, 2, 1, 1]
-        prev: 0
-        current: 1
-
-        prev: 1
-        current: 1
-
-        prev: 1
-        current: 2
-
-        prev.next: 2
-        current.next: 1
-        [1, 1, 1, 1]
-
-        This takes O(N) time
+        This function will delete a node given an index
         """
-        if index > self.length():
-            return f'index {index} is out of range'
-
-        current = self.head
+        if self.length() == 0:
+            return f'Empty List'
+        if index == 0:
+            self.head = self.head.next
         current_index = 0
-        while True:
-            prev_node = current
-            current = current.next
+        # keep track of the previos node
+        prev = self.head
+        current = self.head
+        while current.next != None:
             if current_index == index:
-                prev_node.next = current.next
+                prev.next = current.next
                 return
-            current_index += 1
-
-
+            prev = current
+            current_index +=1
+            current = current.next
+        return
 
 list = LinkedList()
+# print(list.display())
 list.add_to_tail(1)
 list.add_to_tail(1)
 list.add_to_tail(2)
 list.add_to_tail(1)
 list.add_to_tail(1)
-
 print(list.display())
-# print(list.length())
-list.delete(2)
+print(list.length())
+# list.delete(0)
 print(list.display())

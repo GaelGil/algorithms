@@ -5,8 +5,8 @@ class Node:
 
 
 class Stack:
-    def __init__(self,d=0):
-        self.top = Node(d)
+    def __init__(self):
+        self.top = None
     
     def add(self, d):
         """
@@ -14,6 +14,8 @@ class Stack:
         """
         # create new node
         new_node = Node(d)
+        if self.top == None:
+            self.top = new_node
         # set new_node.next to point to old top
         new_node.next = self.top
         # update the new top
@@ -38,10 +40,10 @@ class Stack:
 
 
 # initialize with 1 at bottom
-stack = Stack(1)
+stack = Stack()
+stack.add(1)
 stack.add(2)
 stack.add(3)
-stack.add(4)
 print(f'before removing: {stack.peek()}')
 
 stack.remove()
