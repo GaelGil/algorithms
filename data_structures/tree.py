@@ -36,6 +36,7 @@ class Tree:
         return 0
 
     def delete(self, data):
+        
         return
 
 
