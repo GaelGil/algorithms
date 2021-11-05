@@ -12,8 +12,19 @@ class Tree:
         pass
 
     def display(self):
-        print
+        if self.root != None:
+            self._display(self.root)
+        else:
+            return f'Empty Tree'
         return
+
+    def _display(self, node):
+        if node != None:
+            self._display(node.left)
+            print(node.val)
+            self._display(node.right)
+        return
+
 
     def insert(self, data):
         if self.root == None:
@@ -35,8 +46,7 @@ class Tree:
                 self._insert(data, current_node.right)
         return 0
 
-    def delete(self, data):
-        
+    def delete(self, data):            
         return
 
 
@@ -45,6 +55,11 @@ tree.insert(10)
 tree.insert(5)
 tree.insert(18)
 tree.insert(3)
+tree.insert(4)
+tree.insert(8)
+tree.insert(16)
+tree.insert(23)
+
 
 
 tree.display()
