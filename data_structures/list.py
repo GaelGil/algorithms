@@ -44,3 +44,18 @@ def display(sample_list:list):
 
 print()
 display(sample_list)
+
+
+duplicate_list = [1,2,3,3,3,4,5,5,6]
+
+
+def remove_dupes_from_list(sample_list):
+    dict = {}
+    for num in sample_list:
+        if num in dict:
+            dict[num] += 1
+        dict[num] = 0
+    return list(dict)
+
+
+print(remove_dupes_from_list(duplicate_list))

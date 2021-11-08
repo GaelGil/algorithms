@@ -1,6 +1,3 @@
-from typing import Counter
-
-
 class Node:
     def __init__(self, val=0, next=None):
         self.val = val
@@ -9,55 +6,63 @@ class Node:
 
 class Queue:
     def __init__(self):
-        self.head = Node()
-        self.tail = Node()
+        self.head = None
+        self.tail = None
 
     def enqueue(self, d):
-        node = Node(d)
-        # if the tail is not empty 
+        new_node = Node(d)
         if self.tail != None:
-            # set the tail.next to the new node
-            self.tail.next = node
-        # update the stack so that the tail is the new node
-        self.tail = node
-        # if the head is empty then are new node is the head
+            self.tail.next = new_node
+        self.tail = new_node
         if self.head == None:
-            self.head= node
+            self.head = new_node
         return 0
 
     def dequeue(self):
-        data = self.head.val
-        if self.is_empty():
-            return f'empty'
         self.head = self.head.next
         if self.head == None:
             self.tail = None
-        return data
+        return 0
 
     def is_empty(self):
         return self.head == None
 
     def peek(self):
-        if self.is_empty():
-            return f'empty'
+        return self.head.val
+    def get_tail(self):
         return self.tail.val
+
+    def display(self) -> list:
+        queue = []
+        current = self.head
+        while current.next != None:
+            queue.append(current)
+            current = current.next
+        return queue
 
 
 
 queue = Queue()
 queue.enqueue(1)
+print(queue.get_tail())
 queue.enqueue(2)
+print(queue.get_tail())
+
+
 queue.enqueue(3)
+print(queue.get_tail())
+
 queue.enqueue(4)
+print(queue.get_tail())
 print(queue.peek())
+print()
+
 queue.dequeue()
 queue.dequeue()
 
-# queue.dequeue()
-# queue.dequeue()
-# queue.dequeue()
 
-# print(queue.peek())
+print(queue.peek())
+print(queue.get_tail())
 
 
-# elf.head
+
