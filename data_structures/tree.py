@@ -46,6 +46,20 @@ class Tree:
                 self._insert(data, current_node.right)
         return 0
 
+    def contains(self, target) -> bool:
+        if target == self.root:
+            return True
+        self._contains(target, self.root)
+
+    def _contains(self, target, node):
+        if target == node.val:
+            print('list contains item')
+        if node.val > target:
+            self._contains(target, node.left)
+        if node.val < target:
+            self._contains(target, node.right)
+        
+
     def delete(self, data):            
         return
 
@@ -63,4 +77,7 @@ tree.insert(23)
 
 
 tree.display()
+
+print()
+print(tree.contains(16))
 
