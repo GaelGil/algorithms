@@ -81,3 +81,6 @@ tree.display()
 print()
 print(tree.contains(16))
 
+# print()
+# print(tree.contains(12))
+
