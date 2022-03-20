@@ -1,5 +1,3 @@
-
-
 class Node:
     def __init__(self, val=None) -> None:
         self.val = val
@@ -45,7 +43,23 @@ class LinkedList:
 
 
     def get_item(self, item):
-        return
+        current = self.head
+        while current:
+            if current.val == item:
+                return 'Found'
+            current = current.next
+        return 'Not Found'
+
+    def get_index(self, index):
+        current_index = 0
+        current = self.head
+        while current:
+            if current_index == index:
+                return current
+            current_index += 1
+            current = current.next
+        return 'Index Out of Range'
+
 
     def delete(self, item):
         return
@@ -69,4 +83,10 @@ list.add_infront(0)
 print(list.display())
 
 
-print(list.get_last().val)
+# print(list.get_last().val)
+
+print(list.get_item(2))
+print(list.get_item(6))
+
+print(list.get_index(5).val)
+print(list.get_index(7))

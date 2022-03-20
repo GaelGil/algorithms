@@ -53,8 +53,9 @@ def remove_dupes_from_list(sample_list):
     dict = {}
     for num in sample_list:
         if num in dict:
-            dict[num] += 1
-        dict[num] = 0
+            continue
+        else:
+            dict[num] = 0
     return list(dict)
 
 
