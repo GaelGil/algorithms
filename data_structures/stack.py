@@ -5,50 +5,108 @@ class Node:
 
 
 class Stack:
-    def __init__(self):
+    def __init__(self) -> None:
         self.top = None
-    
-    def add(self, d):
-        """
-        This function will add to the top of a stack. 
-        """
-        # create new node
-        new_node = Node(d)
+
+    def push(self, val):
+        new_node = Node(val)
         if self.top == None:
             self.top = new_node
-        # set new_node.next to point to old top
+            return
         new_node.next = self.top
-        # update the new top
         self.top = new_node
-        return 0
-        
+        return
 
-    def remove(self):
-        """
-        This function will remove from the top. 
-        """
+    def pop(self):
         self.top = self.top.next
-        return 0
+        return
+
+    def get_top(self):
+        return self.top
 
     def is_empty(self):
-        return self.top == None
+        if self.top == None:
+            return True
+        return False
 
-    def peek(self):
-        if self.is_empty():
-            return f'is empty'
-        return self.top.val
+    def display(self):
+        items = []
+        current = self.top
+        while current:
+            items.append(current.val)
+            current = current.next
+        return items
 
-
-# initialize with 1 at bottom
+print('Node Implementation')
 stack = Stack()
-stack.add(1)
-stack.add(2)
-stack.add(3)
-print(f'before removing: {stack.peek()}')
+stack.push(1)
+stack.push(2)
+stack.push(3)
+stack.push(4)
+stack.push(5)
+stack.push(6)
+stack.push(7)
+stack.push(8)
+print(f'Top: {stack.get_top().val}')
+stack.pop()
+print(f'Top: {stack.get_top().val}')
+print(f'Items in stack (left=top, right=bottom): {stack.display()}')
+print()
+print()
 
-stack.remove()
-
-print(f'after removing: {stack.peek()}')
 
 
+class StackList:
+    def __init__(self) -> None:
+        self.stack = []
 
+    def push(self, val):
+        self.stack.append(val)
+
+    def pop(self):
+        if self.is_empty() != False:
+            return self.is_empty()
+        self.stack.pop()
+
+    def get_top(self):
+        if self.is_empty() != False:
+            return self.is_empty()
+        return self.stack[-1]
+
+    def is_empty(self):
+        if self.stack:
+            return False
+        return f'Empty Stack'
+
+    def display(self):
+        items = []
+        if self.is_empty() != False:
+            return self.is_empty()
+        for i in range(len(self.stack), 0, -1):
+            items.append(self.stack[-i])
+        return items
+
+print('List Implementation')
+stack_list = StackList()
+
+print(f'Top: {stack_list.pop()}')
+print(f'Top: {stack_list.get_top()}')
+
+stack_list.push(0)
+stack_list.push(1)
+stack_list.push(2)
+stack_list.push(3)
+stack_list.push(4)
+stack_list.push(5)
+stack_list.push(6)
+stack_list.push(7)
+
+print(f'Top: {stack_list.get_top()}')
+stack_list.pop()
+print(f'Top: {stack_list.get_top()}')
+stack_list.pop()
+print()
+print(stack_list.display())
+
+
+    

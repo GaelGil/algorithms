@@ -1,89 +1,113 @@
 class Node:
-    def __init__(self, val=0, next=None):
+    def __init__(self, val=None) -> None:
         self.val = val
-        self.next = next
+        self.next = None
 
+class LinkedList:
+    def __init__(self) -> None:
+        self.head = Node()
 
-class LinkedList():
-    def __init__(self):
-       self.head = None
-
-    def add_to_tail(self, d):
-        """
-        This function will add a new node to the end of our linked list.
-        We do this by looping through the whole list. Once we get to the
-        end of the list our `current` node will be the node that is at
-        the end. This takes O(N) time
-        """
-        new_node = Node(d)
-        if self.head == None:
+    def append(self, data) -> None:
+        new_node = Node(data)
+        if self.head.val == None:
             self.head = new_node
             return
         current = self.head
         while current.next != None:
             current = current.next
         current.next = new_node
-        return
 
-    def length(self):
-        """
-        This function will count all our elements in our linked list
-        (not includin head). We loop through the whole list and we add
-        to a counter `total`. Then at the end we return our `total`
-        """
-        if self.head == None:
-            return f'Empty List'
-        # start at one for head (we can do this because we know head is not None)
-        counter = 1 
+    def add_infront(self, data) -> None:
+        new_node = Node(data)
+        temp = self.head
+        self.head = new_node
+        self.head.next = temp
+
+    def display(self) -> list:
+        items = []
+        current = self.head
+        while current:
+            items.append(f'{current.val} ->')
+            current = current.next
+        return items
+
+    def get_head(self):
+        return self.head
+
+    def get_length(self):
+        length = 0
+        current = self.head
+        while current:
+            length += 1
+            current = current.next
+        return length
+
+    def get_last(self):
         current = self.head
         while current.next != None:
             current = current.next
-            counter +=1
-        return counter
+        return current
 
-    def display(self):
-        """
-        This function will display all the elements in our list. 
-        """
-        if self.head == None:
-            return f'Empty List'
+
+    def get_item(self, item):
         current = self.head
-        elements = []
-        elements.append(current.val)
-        while current.next != None:
+        while current:
+            if current.val == item:
+                return 'Found'
             current = current.next
-            elements.append(current.val)
-        return elements
+        return 'Not Found'
 
-    def delete(self, index):
-        """
-        This function will delete a node given an index
-        """
-        if self.length() == 0:
-            return f'Empty List'
-        if index == 0:
-            self.head = self.head.next
+    def get_index(self, index):
         current_index = 0
-        # keep track of the previos node
-        prev = self.head
         current = self.head
-        while current.next != None:
+        while current:
             if current_index == index:
+                return current
+            current_index += 1
+            current = current.next
+        return 'Index Out of Range'
+
+
+    def delete(self, item):
+        current = self.head
+        prev = self.head
+        while current:
+            if item == current.val:
                 prev.next = current.next
                 return
             prev = current
-            current_index +=1
             current = current.next
-        return
+        return f'{item} not found'
+
 
 list = LinkedList()
-# print(list.display())
-list.add_to_tail(1)
-list.add_to_tail(1)
-list.add_to_tail(2)
-list.add_to_tail(1)
-list.add_to_tail(1)
+
+list.append(1)
+list.append(2)
+list.append(3)
+list.append(4)
+list.append(5)
+
 print(list.display())
-print(list.length())
-# list.delete(0)
+
+
+# print(list.get_head().val)
+
+
+list.add_infront(0)
 print(list.display())
+
+
+# print(list.get_last().val)
+
+print(list.get_item(2))
+print(list.get_item(6))
+
+print(list.get_index(5).val)
+print(list.get_index(7))
+
+list.delete(2)
+
+print(list.display())
+
+print(list.get_length())
