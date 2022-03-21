@@ -19,9 +19,8 @@ class LinkedList:
 
     def add_infront(self, data) -> None:
         new_node = Node(data)
-        temp = self.head
+        new_node.next = self.head
         self.head = new_node
-        self.head.next = temp
 
     def display(self) -> list:
         items = []
