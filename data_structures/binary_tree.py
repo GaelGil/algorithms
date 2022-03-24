@@ -37,7 +37,6 @@ class Tree:
     def find(self):
         return
 
-
     def in_order(self):
         if self.root:
             self._in_order(self.root) 
