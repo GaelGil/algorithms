@@ -1,9 +1,5 @@
-from platform import node
-import re
-
-
 class Node:
-    def __init__(self, val=None, left=None, right=None) -> None:
+    def __init__(self, val=0, left=None, right=None) -> None:
         self.val = val
         self.left = left
         self.right = right
@@ -32,14 +28,51 @@ class Tree:
                 current_node.right = Node(data)
                 return
             else:
-                self.insert(data, current_node.right)
+                self._insert(data, current_node.right)
         return
 
     def get_root(self):
         return self.root
 
+    def find(self):
+        return
 
-    # def display:
+
+    def in_order(self):
+        if self.root:
+            self._in_order(self.root) 
+        return 
+
+    def _in_order(self, node):
+        if node:
+            self._in_order(node.left)
+            print(node.val)
+            self._in_order(node.right)
+        return
+
+    def pre_order(self):
+        if self.root:
+            self._pre_order(self.root)
+        return
+
+    def _pre_order(self, node):
+        if node:
+            print(node.val)
+            self._pre_order(node.left)
+            self._pre_order(node.right)
+        return
+
+    def post_order(self):
+        if self.root:
+            self._post_order(self.root)
+        return
+
+    def _post_order(self, node):
+        if node:
+            self._post_order(node.left)
+            self._post_order(node.right)
+            print(node.val)
+        return
 
 
 
@@ -50,10 +83,12 @@ tree.insert(10)
 tree.insert(5)
 tree.insert(12)
 
-print(tree.get_root().val)
-print(tree.root.left.val)
-print(tree.root.left.left.val)
 
-print(tree.root.right.val)
-# print(tree.root.right.right.val)
+print()
+tree.in_order()
 
+print()
+tree.post_order()
+
+print()
+tree.pre_order()
