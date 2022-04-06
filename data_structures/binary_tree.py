@@ -50,6 +50,8 @@ class Tree:
         return
 
     def pre_order(self):
+        """ like depth first search (explore all the nodes and their paths then go back) 
+        """
         if self.root:
             self._pre_order(self.root)
         return
@@ -91,3 +93,9 @@ tree.post_order()
 
 print()
 tree.pre_order()
+
+
+# In depth first search if you have a node you must visit all the other nodes on that node until it has no connections before moving on.
+# In breadth first search you check all nodes at once until you can't check anymore.
+
+# Implement dfs and bfs in trees 

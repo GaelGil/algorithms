@@ -67,6 +67,9 @@ class LinkedList:
         return 'Index Out of Range'
 
 
+    def sum(self):
+        return
+
     def delete(self, item):
         current = self.head
         prev = self.head
