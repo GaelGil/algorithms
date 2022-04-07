@@ -34,7 +34,13 @@ class Tree:
     def get_root(self):
         return self.root
 
-    def find(self):
+    def includes(self):
+        return
+
+    def sum(self):
+        return
+
+    def min(self):
         return
 
     def in_order(self):
@@ -50,7 +56,8 @@ class Tree:
         return
 
     def pre_order(self):
-        """ like depth first search (explore all the nodes and their paths then go back) 
+        """ 
+        like depth first search (explore all the nodes and their paths then go back and explore others) 
         """
         if self.root:
             self._pre_order(self.root)
@@ -75,6 +82,8 @@ class Tree:
             print(node.val)
         return
 
+    def bfs(self, node):
+        return
 
 
 tree = Tree()
@@ -95,7 +104,9 @@ print()
 tree.pre_order()
 
 
-# In depth first search if you have a node you must visit all the other nodes on that node until it has no connections before moving on.
-# In breadth first search you check all nodes at once until you can't check anymore.
+# In depth first search if you have a node you must visit all the other nodes on that node until it
+# has no connections before moving on. Uses stack data structure.
+# In breadth first search you check all nodes at once until you can't check anymore. Uses queue data
+# structure
 
 # Implement dfs and bfs in trees 
