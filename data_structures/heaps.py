@@ -6,8 +6,10 @@ class Node:
     ----------
     val : int
         Value of the node
-    next : node
-        The address of the next node
+    left : node
+        The address of the left node (set to None by default)
+    right: node
+        The address of the right noed (set to None by default)
 
     Methods
     -------

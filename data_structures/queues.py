@@ -7,7 +7,7 @@ class Node:
     val : int
         Value of the node
     next : node
-        The address of the next node
+        The address of the next node (set to None by default)
 
     Methods
     -------
@@ -180,7 +180,7 @@ class QueueList:
     -------
     None
     """
-    
+
     def __init__(self) -> None:
         self.queue = []
 

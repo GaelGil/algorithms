@@ -7,7 +7,7 @@ class Node:
     val : int
         Value of the node
     next : node
-        The address of the next node
+        The address of the next node (set to None by default)
 
     Methods
     -------
@@ -15,7 +15,7 @@ class Node:
     """
     def __init__(self, val=0, next=None):
         self.val = val
-        self.next = next
+        self.next = None
 
 
 class Stack:

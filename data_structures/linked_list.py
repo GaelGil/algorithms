@@ -7,7 +7,7 @@ class Node:
     val : int
         Value of the node
     next : node
-        The address of the next node
+        The address of the next node (set to None by default)
 
     Methods
     -------
