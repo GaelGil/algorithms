@@ -40,7 +40,10 @@ class Tree:
     def sum(self):
         return
 
-    def min(self):
+    def _min(self):
+        return
+
+    def _max(self):
         return
 
     def in_order(self):
@@ -82,7 +85,15 @@ class Tree:
             print(node.val)
         return
 
-    def bfs(self, node):
+    def bfs(self):
+        queue = [self.root]
+        while queue:
+            node = queue.pop()
+            print(node.val)
+            if node.left:
+                queue.insert(0, node.left)
+            if node.right:
+                queue.insert(0, node.right)
         return
 
 
@@ -103,6 +114,8 @@ tree.post_order()
 print()
 tree.pre_order()
 
+print()
+tree.bfs()
 
 # In depth first search if you have a node you must visit all the other nodes on that node until it
 # has no connections before moving on. Uses stack data structure.

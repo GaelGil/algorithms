@@ -1,4 +1,3 @@
-
 # intialize a list
 sample_list = [[]]
 

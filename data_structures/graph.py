@@ -1,22 +1,18 @@
-from importlib.resources import path
-from operator import contains, truediv
-
-
 class Graph:
     def __init__(self) -> None:
-        self.graph = {
-            'a': ['b', 'c', 'd'],
-            'b': ['a'],
-            'c': ['e', 'f'],
-            'd': ['c', 'e'],
-            'e': ['f', 'g'],
-            'f': ['g', 'e'],
-            'g': []
-        }
+        self.graph = {}
 
-
-    def insert_node(self, node):
+    def insert_node(self, node, neigbors):
+        if not self.contains(node):
+            self.graph[node] = neigbors            
         return
+
+    def insert_new_neighbor(self, node, neighbor):
+        for i in self.graph[node]:
+            if i == neighbor:
+                return
+        self.graph[node].append(neighbor)
+        
 
     def contains(self, val):
         if val in self.graph:
@@ -43,7 +39,7 @@ class Graph:
         while queue:
             n = queue.pop()
             # print(n)
-            if n not in visited:
+            if n not in visited and node in self.graph:
                 visited[n] = 0
                 for i in self.graph[n]:
                     queue.insert(0, i)
@@ -55,17 +51,20 @@ class Graph:
         while stack:
             node = stack.pop()
             # print(node)
-            if node not in visited:
+            if node not in visited and node in self.graph:
                 visited[node] = 0
                 for i in self.graph[node]:
                     stack.append(i)
         return visited
 
 
+    def display(self):
+        return self.graph
+
     
 
 # graph = {
-#     'a': ['b', 'c', 'd'],
+#     'a': ['b', 'c', 'd', 'l'],
 #     'b': ['a'],
 #     'c': ['e', 'f'],
 #     'd': ['c', 'e'],
@@ -76,6 +75,19 @@ class Graph:
 
 g = Graph()
 
+g.insert_node('a', ['b', 'c', 'd'])
+g.insert_node('b', ['a'])
+g.insert_node('c', ['e', 'f'])
+g.insert_node('d', ['c', 'f'])
+g.insert_node('e', ['f', 'g'])
+g.insert_node('f', ['g', 'e'])
+g.insert_node('g', [])
+print(g.display())
+print()
+g.insert_new_neighbor('a', 'l')
+print(g.display())
+print()
+
 print(g.contains('a'))
 print(g.contains('j'))
 
@@ -85,6 +97,7 @@ path_a_to_g = g.contains_path('a', 'g','dfs')
 
 print(f'Does g contain some path to a: {path_g_to_a}')
 print(f'Does a contain some path to g: {path_a_to_g}')
+
 
 
 

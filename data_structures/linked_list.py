@@ -68,7 +68,12 @@ class LinkedList:
 
 
     def sum(self):
-        return
+        sum_ = 0
+        current = self.head
+        while current:
+            sum_ += current.val
+            current = current.next
+        return sum_
 
     def delete(self, item):
         current = self.head
@@ -112,4 +117,9 @@ list.delete(2)
 
 print(list.display())
 
+print('length')
 print(list.get_length())
+print()
+
+print('sum')
+print(list.sum())
