@@ -1,13 +1,59 @@
 class Graph:
+    """
+    A class used to represent a single node
+
+    Attributes
+    ----------
+    val : int
+        Value of the node
+    next : node
+        The address of the next node
+
+    Methods
+    -------
+    None
+    """
     def __init__(self) -> None:
         self.graph = {}
 
     def insert_node(self, node, neigbors):
+        """Gets and prints the spreadsheet's header columns
+
+        Parameters
+        ----------
+        file_loc : str
+            The file location of the spreadsheet
+        print_cols : bool, optional
+            A flag used to print the columns to the console (default is
+            False)
+
+        Returns
+        -------
+        list
+            a list of strings used that are the header columns
+        """
+
         if not self.contains(node):
             self.graph[node] = neigbors            
         return
 
     def insert_new_neighbor(self, node, neighbor):
+        """Gets and prints the spreadsheet's header columns
+
+        Parameters
+        ----------
+        file_loc : str
+            The file location of the spreadsheet
+        print_cols : bool, optional
+            A flag used to print the columns to the console (default is
+            False)
+
+        Returns
+        -------
+        list
+            a list of strings used that are the header columns
+        """
+
         for i in self.graph[node]:
             if i == neighbor:
                 return
@@ -15,11 +61,43 @@ class Graph:
         
 
     def contains(self, val):
+        """Gets and prints the spreadsheet's header columns
+
+        Parameters
+        ----------
+        file_loc : str
+            The file location of the spreadsheet
+        print_cols : bool, optional
+            A flag used to print the columns to the console (default is
+            False)
+
+        Returns
+        -------
+        list
+            a list of strings used that are the header columns
+        """
+
         if val in self.graph:
             return True
         return False
 
     def contains_path(self, origin, destination, type_):
+        """Gets and prints the spreadsheet's header columns
+
+        Parameters
+        ----------
+        file_loc : str
+            The file location of the spreadsheet
+        print_cols : bool, optional
+            A flag used to print the columns to the console (default is
+            False)
+
+        Returns
+        -------
+        list
+            a list of strings used that are the header columns
+        """
+
         if self.contains(origin) == False:
             return f'{origin} not in graph'
         if type_ == 'dfs':
@@ -34,6 +112,22 @@ class Graph:
 
 
     def bfs(self, node):
+        """Gets and prints the spreadsheet's header columns
+
+        Parameters
+        ----------
+        file_loc : str
+            The file location of the spreadsheet
+        print_cols : bool, optional
+            A flag used to print the columns to the console (default is
+            False)
+
+        Returns
+        -------
+        list
+            a list of strings used that are the header columns
+        """
+    
         queue = [node]
         visited = {}
         while queue:
@@ -46,6 +140,22 @@ class Graph:
         return visited
 
     def dfs(self, node):
+        """Gets and prints the spreadsheet's header columns
+
+        Parameters
+        ----------
+        file_loc : str
+            The file location of the spreadsheet
+        print_cols : bool, optional
+            A flag used to print the columns to the console (default is
+            False)
+
+        Returns
+        -------
+        list
+            a list of strings used that are the header columns
+        """
+
         stack = [node]
         visited = {}
         while stack:

@@ -1,15 +1,58 @@
 class Node:
+    """
+    A class used to represent a single node
+
+    Attributes
+    ----------
+    val : int
+        Value of the node
+    next : node
+        The address of the next node
+
+    Methods
+    -------
+    None
+    """
     def __init__(self, val=None) -> None:
         self.val = val
         self.next = None
 
 
 class Queue:
+    """
+    A class used to represent a single node
+
+    Attributes
+    ----------
+    val : int
+        Value of the node
+    next : node
+        The address of the next node
+
+    Methods
+    -------
+    None
+    """
     def __init__(self) -> None:
         self.head = None
         self.tail = None
 
     def enqueue(self, data):
+        """Gets and prints the spreadsheet's header columns
+
+        Parameters
+        ----------
+        file_loc : str
+            The file location of the spreadsheet
+        print_cols : bool, optional
+            A flag used to print the columns to the console (default is
+            False)
+
+        Returns
+        -------
+        list
+            a list of strings used that are the header columns
+        """
         new_node = Node(data)
         if self.tail:
             self.tail.next = new_node
@@ -19,6 +62,21 @@ class Queue:
         return
 
     def dequeue(self):
+        """Gets and prints the spreadsheet's header columns
+
+        Parameters
+        ----------
+        file_loc : str
+            The file location of the spreadsheet
+        print_cols : bool, optional
+            A flag used to print the columns to the console (default is
+            False)
+
+        Returns
+        -------
+        list
+            a list of strings used that are the header columns
+        """
         if self.head:
             if self.head == self.tail:
                 self.head = None
@@ -28,6 +86,21 @@ class Queue:
         return
 
     def display(self):
+        """Gets and prints the spreadsheet's header columns
+
+        Parameters
+        ----------
+        file_loc : str
+            The file location of the spreadsheet
+        print_cols : bool, optional
+            A flag used to print the columns to the console (default is
+            False)
+
+        Returns
+        -------
+        list
+            a list of strings used that are the header columns
+        """
         items = []
         current = self.head
         while current:
@@ -36,9 +109,39 @@ class Queue:
         return items
 
     def get_head(self):
+        """Gets and prints the spreadsheet's header columns
+
+        Parameters
+        ----------
+        file_loc : str
+            The file location of the spreadsheet
+        print_cols : bool, optional
+            A flag used to print the columns to the console (default is
+            False)
+
+        Returns
+        -------
+        list
+            a list of strings used that are the header columns
+        """
         return self.head
 
     def get_tail(self):
+        """Gets and prints the spreadsheet's header columns
+
+        Parameters
+        ----------
+        file_loc : str
+            The file location of the spreadsheet
+        print_cols : bool, optional
+            A flag used to print the columns to the console (default is
+            False)
+
+        Returns
+        -------
+        list
+            a list of strings used that are the header columns
+        """
         return self.tail
 
 print('Node Implementation')
@@ -63,27 +166,132 @@ print()
 
 
 class QueueList:
+    """
+    A class used to represent a single node
+
+    Attributes
+    ----------
+    val : int
+        Value of the node
+    next : node
+        The address of the next node
+
+    Methods
+    -------
+    None
+    """
+    
     def __init__(self) -> None:
         self.queue = []
 
     def enqueue(self, data):
+        """Gets and prints the spreadsheet's header columns
+
+        Parameters
+        ----------
+        file_loc : str
+            The file location of the spreadsheet
+        print_cols : bool, optional
+            A flag used to print the columns to the console (default is
+            False)
+
+        Returns
+        -------
+        list
+            a list of strings used that are the header columns
+        """
         self.queue.insert(0, data)
         return 
 
     def dequeue(self):
+        """Gets and prints the spreadsheet's header columns
+
+        Parameters
+        ----------
+        file_loc : str
+            The file location of the spreadsheet
+        print_cols : bool, optional
+            A flag used to print the columns to the console (default is
+            False)
+
+        Returns
+        -------
+        list
+            a list of strings used that are the header columns
+        """
         self.queue.pop()
         return
 
     def get_head(self):
+        """Gets and prints the spreadsheet's header columns
+
+        Parameters
+        ----------
+        file_loc : str
+            The file location of the spreadsheet
+        print_cols : bool, optional
+            A flag used to print the columns to the console (default is
+            False)
+
+        Returns
+        -------
+        list
+            a list of strings used that are the header columns
+        """
         return self.queue[-1]
 
     def get_tail(self):
+        """Gets and prints the spreadsheet's header columns
+
+        Parameters
+        ----------
+        file_loc : str
+            The file location of the spreadsheet
+        print_cols : bool, optional
+            A flag used to print the columns to the console (default is
+            False)
+
+        Returns
+        -------
+        list
+            a list of strings used that are the header columns
+        """
         return self.queue[0]
 
     def get_lenght(self):
+        """Gets and prints the spreadsheet's header columns
+
+        Parameters
+        ----------
+        file_loc : str
+            The file location of the spreadsheet
+        print_cols : bool, optional
+            A flag used to print the columns to the console (default is
+            False)
+
+        Returns
+        -------
+        list
+            a list of strings used that are the header columns
+        """
         return len(self.queue)
 
     def display(self):
+        """Gets and prints the spreadsheet's header columns
+
+        Parameters
+        ----------
+        file_loc : str
+            The file location of the spreadsheet
+        print_cols : bool, optional
+            A flag used to print the columns to the console (default is
+            False)
+
+        Returns
+        -------
+        list
+            a list of strings used that are the header columns
+        """
         return self.queue
 
 

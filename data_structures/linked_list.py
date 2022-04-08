@@ -1,13 +1,56 @@
 class Node:
+    """
+    A class used to represent a single node
+
+    Attributes
+    ----------
+    val : int
+        Value of the node
+    next : node
+        The address of the next node
+
+    Methods
+    -------
+    None
+    """
     def __init__(self, val=None) -> None:
         self.val = val
         self.next = None
 
 class LinkedList:
+    """
+    A class used to represent a single node
+
+    Attributes
+    ----------
+    val : int
+        Value of the node
+    next : node
+        The address of the next node
+
+    Methods
+    -------
+    None
+    """
     def __init__(self) -> None:
         self.head = Node()
 
     def append(self, data) -> None:
+        """Gets and prints the spreadsheet's header columns
+
+        Parameters
+        ----------
+        file_loc : str
+            The file location of the spreadsheet
+        print_cols : bool, optional
+            A flag used to print the columns to the console (default is
+            False)
+
+        Returns
+        -------
+        list
+            a list of strings used that are the header columns
+        """
         new_node = Node(data)
         if self.head.val == None:
             self.head = new_node
@@ -18,11 +61,41 @@ class LinkedList:
         current.next = new_node
 
     def add_infront(self, data) -> None:
+        """Gets and prints the spreadsheet's header columns
+
+        Parameters
+        ----------
+        file_loc : str
+            The file location of the spreadsheet
+        print_cols : bool, optional
+            A flag used to print the columns to the console (default is
+            False)
+
+        Returns
+        -------
+        list
+            a list of strings used that are the header columns
+        """
         new_node = Node(data)
         new_node.next = self.head
         self.head = new_node
 
     def display(self) -> list:
+        """Gets and prints the spreadsheet's header columns
+
+        Parameters
+        ----------
+        file_loc : str
+            The file location of the spreadsheet
+        print_cols : bool, optional
+            A flag used to print the columns to the console (default is
+            False)
+
+        Returns
+        -------
+        list
+            a list of strings used that are the header columns
+        """
         items = []
         current = self.head
         while current:
@@ -31,9 +104,39 @@ class LinkedList:
         return items
 
     def get_head(self):
+        """Gets and prints the spreadsheet's header columns
+
+        Parameters
+        ----------
+        file_loc : str
+            The file location of the spreadsheet
+        print_cols : bool, optional
+            A flag used to print the columns to the console (default is
+            False)
+
+        Returns
+        -------
+        list
+            a list of strings used that are the header columns
+        """
         return self.head
 
     def get_length(self):
+        """Gets and prints the spreadsheet's header columns
+
+        Parameters
+        ----------
+        file_loc : str
+            The file location of the spreadsheet
+        print_cols : bool, optional
+            A flag used to print the columns to the console (default is
+            False)
+
+        Returns
+        -------
+        list
+            a list of strings used that are the header columns
+        """
         length = 0
         current = self.head
         while current:
@@ -42,6 +145,21 @@ class LinkedList:
         return length
 
     def get_last(self):
+        """Gets and prints the spreadsheet's header columns
+
+        Parameters
+        ----------
+        file_loc : str
+            The file location of the spreadsheet
+        print_cols : bool, optional
+            A flag used to print the columns to the console (default is
+            False)
+
+        Returns
+        -------
+        list
+            a list of strings used that are the header columns
+        """
         current = self.head
         while current.next != None:
             current = current.next
@@ -49,6 +167,21 @@ class LinkedList:
 
 
     def get_item(self, item):
+        """Gets and prints the spreadsheet's header columns
+
+        Parameters
+        ----------
+        file_loc : str
+            The file location of the spreadsheet
+        print_cols : bool, optional
+            A flag used to print the columns to the console (default is
+            False)
+
+        Returns
+        -------
+        list
+            a list of strings used that are the header columns
+        """
         current = self.head
         while current:
             if current.val == item:
@@ -57,6 +190,21 @@ class LinkedList:
         return 'Not Found'
 
     def get_index(self, index):
+        """Gets and prints the spreadsheet's header columns
+
+        Parameters
+        ----------
+        file_loc : str
+            The file location of the spreadsheet
+        print_cols : bool, optional
+            A flag used to print the columns to the console (default is
+            False)
+
+        Returns
+        -------
+        list
+            a list of strings used that are the header columns
+        """
         current_index = 0
         current = self.head
         while current:
@@ -68,6 +216,21 @@ class LinkedList:
 
 
     def sum(self):
+        """Gets and prints the spreadsheet's header columns
+
+        Parameters
+        ----------
+        file_loc : str
+            The file location of the spreadsheet
+        print_cols : bool, optional
+            A flag used to print the columns to the console (default is
+            False)
+
+        Returns
+        -------
+        list
+            a list of strings used that are the header columns
+        """
         sum_ = 0
         current = self.head
         while current:
@@ -76,6 +239,21 @@ class LinkedList:
         return sum_
 
     def delete(self, item):
+        """Gets and prints the spreadsheet's header columns
+
+        Parameters
+        ----------
+        file_loc : str
+            The file location of the spreadsheet
+        print_cols : bool, optional
+            A flag used to print the columns to the console (default is
+            False)
+
+        Returns
+        -------
+        list
+            a list of strings used that are the header columns
+        """
         current = self.head
         prev = self.head
         while current:

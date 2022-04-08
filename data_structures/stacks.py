@@ -1,14 +1,45 @@
 class Node:
+    """
+    A class used to represent a single node
+
+    Attributes
+    ----------
+    val : int
+        Value of the node
+    next : node
+        The address of the next node
+
+    Methods
+    -------
+    None
+    """
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
 
 
 class Stack:
+    """
+    A class used to represent an stack
+
+    ...
+
+    Attributes
+    ----------
+    top : node
+        The node at the top of the stack (set to None by default)
+
+    Methods
+    -------
+    push(val)
+        Adds to stop of stack
+    """
     def __init__(self) -> None:
         self.top = None
 
     def push(self, val):
+        """
+        """
         new_node = Node(val)
         if self.top == None:
             self.top = new_node
@@ -18,10 +49,14 @@ class Stack:
         return
 
     def pop(self):
+        """
+        """
         self.top = self.top.next
         return
 
     def get_top(self):
+        """
+        """
         return self.top
 
     def is_empty(self):
