@@ -3,25 +3,43 @@ from node import Node
 
 class Stack:
     """
-    A class used to represent an stack
-
-    ...
+    A class used to represent a stack with nodes
 
     Attributes
     ----------
     top : node
-        The node at the top of the stack (set to None by default)
+        The node at the top of the stack
 
     Methods
     -------
-    push(val)
-        Adds to stop of stack
+    push(self, data)
+        Insert node at the top of our stack
+    pop(self, data, current_node)
+        Remove the top node from the stack
+    get_top(self)
+        Return the top of the stack.
+    is_empty(self)
+        Check if the stack is empty.
+    display(self)
+        Get the sum of the tree.
     """
     def __init__(self) -> None:
         self.top = None
 
     def push(self, val):
-        """
+        """Add to top of our stack. If our stack is currently empty
+        we set the top equal to our new node. If our stack is not empty
+        we set our new node to point to our top and our new node is set
+        to equal our new top.
+
+        Parameters
+        ----------
+        val : int
+            The value of a item.
+
+        Returns
+        -------
+        None
         """
         new_node = Node(val)
         if self.top == None:
@@ -32,22 +50,66 @@ class Stack:
         return
 
     def pop(self):
-        """
+        """Insert a node at the root if the root is empty. If its not empty
+        pass node to `_insert()` to find where to properly insert the node.
+
+        Parameters
+        ----------
+        data : int
+            The value of a node.
+
+        Returns
+        -------
+        None
         """
         self.top = self.top.next
         return
 
     def get_top(self):
-        """
+        """Insert a node at the root if the root is empty. If its not empty
+        pass node to `_insert()` to find where to properly insert the node.
+
+        Parameters
+        ----------
+        data : int
+            The value of a node.
+
+        Returns
+        -------
+        None
         """
         return self.top
 
     def is_empty(self):
-        if self.top == None:
-            return True
-        return False
+        """Insert a node at the root if the root is empty. If its not empty
+        pass node to `_insert()` to find where to properly insert the node.
+
+        Parameters
+        ----------
+        data : int
+            The value of a node.
+
+        Returns
+        -------
+        None
+        """
+        if self.top:
+            return False
+        return True
 
     def display(self):
+        """Insert a node at the root if the root is empty. If its not empty
+        pass node to `_insert()` to find where to properly insert the node.
+
+        Parameters
+        ----------
+        data : int
+            The value of a node.
+
+        Returns
+        -------
+        None
+        """
         items = []
         current = self.top
         while current:
@@ -75,6 +137,27 @@ print()
 
 
 class StackList:
+    """
+    A class used to represent a stack with nodes
+
+    Attributes
+    ----------
+    stack : list
+        A list representing a stack.
+
+    Methods
+    -------
+    push(self, data)
+        Insert node at the top of our stack
+    pop(self, data, current_node)
+        Remove the top node from the stack
+    get_top(self)
+        Return the top of the stack.
+    is_empty(self)
+        Check if the stack is empty.
+    display(self)
+        Get the sum of the tree.
+    """
     def __init__(self) -> None:
         self.stack = []
 

@@ -2,18 +2,25 @@ from node import Node
 
 class Queue:
     """
-    A class used to represent a single node
+    A class used to represent a stack with nodes
 
     Attributes
     ----------
-    val : int
-        Value of the node
-    next : node
-        The address of the next node
+    top : node
+        The node at the top of the stack
 
     Methods
     -------
-    None
+    push(self, data)
+        Insert node at the top of our stack
+    pop(self, data, current_node)
+        Remove the top node from the stack
+    get_top(self)
+        Return the top of the stack.
+    is_empty(self)
+        Check if the stack is empty.
+    display(self)
+        Get the sum of the tree.
     """
     def __init__(self) -> None:
         self.head = None
@@ -149,20 +156,26 @@ print()
 
 class QueueList:
     """
-    A class used to represent a single node
+    A class used to represent a stack with nodes
 
     Attributes
     ----------
-    val : int
-        Value of the node
-    next : node
-        The address of the next node
+    top : node
+        The node at the top of the stack
 
     Methods
     -------
-    None
+    push(self, data)
+        Insert node at the top of our stack
+    pop(self, data, current_node)
+        Remove the top node from the stack
+    get_top(self)
+        Return the top of the stack.
+    is_empty(self)
+        Check if the stack is empty.
+    display(self)
+        Get the sum of the tree.
     """
-
     def __init__(self) -> None:
         self.queue = []
 

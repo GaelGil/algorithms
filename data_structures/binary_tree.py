@@ -44,20 +44,17 @@ class Tree:
         self.root = None
 
     def insert(self, data):
-        """Gets and prints the spreadsheet's header columns
+        """Insert a node at the root if the root is empty. If its not empty
+        pass node to `_insert()` to find where to properly insert the node.
 
         Parameters
         ----------
-        file_loc : str
-            The file location of the spreadsheet
-        print_cols : bool, optional
-            A flag used to print the columns to the console (default is
-            False)
+        data : int
+            The value of a node.
 
         Returns
         -------
-        list
-            a list of strings used that are the header columns
+        None
         """
         if not self.root:
             new_node = Node(data)
@@ -65,22 +62,25 @@ class Tree:
             return
         self._insert(data, self.root)
 
+
     def _insert(self, data, current_node):
-        """Gets and prints the spreadsheet's header columns
+        """Function to find where to insert a node in a binary tree.
+        We check if the value we are trying to insert is greater than
+        the current node. Depending on that we check the left or right
+        node if they exists. We continue this proccess recursively
 
         Parameters
         ----------
-        file_loc : str
-            The file location of the spreadsheet
-        print_cols : bool, optional
-            A flag used to print the columns to the console (default is
-            False)
+        data : int
+            The value of the node.
+        current_node : node
+            The node we are comparing to figure out where to add our node.
 
         Returns
         -------
-        list
-            a list of strings used that are the header columns
+        None
         """
+
         if data < current_node.val:
             if not current_node.left:
                 current_node.left = Node(data)
@@ -97,42 +97,47 @@ class Tree:
         return
 
     def get_root(self):
-        """Gets and prints the spreadsheet's header columns
+        """Getter method for the root
 
         Parameters
         ----------
-        file_loc : str
-            The file location of the spreadsheet
-        print_cols : bool, optional
-            A flag used to print the columns to the console (default is
-            False)
+        None
 
         Returns
         -------
-        list
-            a list of strings used that are the header columns
+        node
+            The root node of our binary tree
         """
+
         return self.root
 
-    def includes(self):
-        """Gets and prints the spreadsheet's header columns
+    def includes(self, value):
+        """Function to check if our binary tree includes a certain value
 
         Parameters
         ----------
-        file_loc : str
-            The file location of the spreadsheet
-        print_cols : bool, optional
-            A flag used to print the columns to the console (default is
-            False)
+        value : int
+            The value we are tring to find in our tree.
 
         Returns
         -------
-        list
-            a list of strings used that are the header columns
+        bool
+            True if the value we are trying to find is in our tree and false
+            if it is not.
         """
-        return
+        queue = [self.root]
+        while queue:
+            node = queue.pop()
+            if node.val == value:
+                return True
+            if node.left:
+                queue.insert(0, node.left)
+            if node.right:
+                queue.insert(0, node.right)
+        return False
 
     def _sum(self):
+        # TODO: finish docuementation
         """Gets and prints the spreadsheet's header columns
 
         Parameters
@@ -148,9 +153,19 @@ class Tree:
         list
             a list of strings used that are the header columns
         """
-        return
+        queue = [self.root]
+        sum_tree = 0
+        while queue:
+            node = queue.pop()
+            sum_tree += node.val
+            if node.left:
+                queue.insert(0, node.left)
+            if node.right:
+                queue.insert(0, node.right)
+        return sum_tree
 
     def _min(self):
+        # TODO: finish docuementation
         """Gets and prints the spreadsheet's header columns
 
         Parameters
@@ -166,9 +181,20 @@ class Tree:
         list
             a list of strings used that are the header columns
         """
-        return
+        queue = [self.root]
+        min_val = self.root.val
+        while queue:
+            node = queue.pop()
+            if node.val <= min_val:
+                min_val = node.val
+            if node.left:
+                queue.insert(0, node.left)
+            if node.right:
+                queue.insert(0, node.right)
+        return min_val
 
     def _max(self):
+        # TODO: finish docuementation
         """Gets and prints the spreadsheet's header columns
 
         Parameters
@@ -184,9 +210,20 @@ class Tree:
         list
             a list of strings used that are the header columns
         """
-        return
+        queue = [self.root]
+        max_val = self.root.val
+        while queue:
+            node = queue.pop()
+            if node.val >= max_val:
+                max_val = node.val
+            if node.left:
+                queue.insert(0, node.left)
+            if node.right:
+                queue.insert(0, node.right)
+        return max_val
 
     def in_order(self):
+        # TODO: finish docuementation
         """Gets and prints the spreadsheet's header columns
 
         Parameters
@@ -207,6 +244,7 @@ class Tree:
         return 
 
     def _in_order(self, node):
+        # TODO: finish docuementation
         """Gets and prints the spreadsheet's header columns
 
         Parameters
@@ -229,6 +267,7 @@ class Tree:
         return
 
     def pre_order(self):
+        # TODO: finish docuementation
         """ 
         like depth first search (explore all the nodes and their paths then go back and explore others) 
         """
@@ -237,6 +276,7 @@ class Tree:
         return
 
     def _pre_order(self, node):
+        # TODO: finish docuementation
         """Gets and prints the spreadsheet's header columns
 
         Parameters
@@ -259,6 +299,7 @@ class Tree:
         return
 
     def post_order(self):
+        # TODO: finish docuementation
         """Gets and prints the spreadsheet's header columns
 
         Parameters
@@ -279,20 +320,16 @@ class Tree:
         return
 
     def _post_order(self, node):
-        """Gets and prints the spreadsheet's header columns
+        """Function to continue post order traversal
 
         Parameters
         ----------
-        file_loc : str
-            The file location of the spreadsheet
-        print_cols : bool, optional
-            A flag used to print the columns to the console (default is
-            False)
+        node : node
+            Node we are trying to print
 
         Returns
         -------
-        list
-            a list of strings used that are the header columns
+        None
         """
         if node:
             self._post_order(node.left)
@@ -301,20 +338,15 @@ class Tree:
         return
 
     def bfs(self):
-        """Gets and prints the spreadsheet's header columns
+        """Function to perform breadths first search
 
         Parameters
         ----------
-        file_loc : str
-            The file location of the spreadsheet
-        print_cols : bool, optional
-            A flag used to print the columns to the console (default is
-            False)
+        None
 
         Returns
         -------
-        list
-            a list of strings used that are the header columns
+        None
         """
         queue = [self.root]
         while queue:
@@ -347,9 +379,11 @@ tree.pre_order()
 print()
 tree.bfs()
 
-# In depth first search if you have a node you must visit all the other nodes on that node until it
-# has no connections before moving on. Uses stack data structure.
-# In breadth first search you check all nodes at once until you can't check anymore. Uses queue data
-# structure
+sum_ = tree._sum()
+print(f'Sum: {sum_}')
 
-# Implement dfs and bfs in trees 
+max_val = tree._max()
+min_val = tree._min()
+
+print(f'Max: {max_val}')
+print(f'Min: {min_val}')
