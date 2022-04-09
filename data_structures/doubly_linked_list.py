@@ -4,10 +4,10 @@ from tkinter.messagebox import NO
 
 
 class DoublyLinkedNode:
-    def __init__(self, val, prev, next) -> None:
+    def __init__(self, val, prev=None, next=None) -> None:
         self.val = val
-        self.prev = None
-        self.next = None
+        self.prev = prev
+        self.next = next
 
 
 class DoublyLinkedList:
