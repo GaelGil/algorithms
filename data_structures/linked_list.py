@@ -25,6 +25,7 @@ class LinkedList:
     """
     def __init__(self) -> None:
         self.head = Node()
+        self.size = 0
 
     def append(self, data) -> None:
         """Gets and prints the spreadsheet's header columns
@@ -45,11 +46,14 @@ class LinkedList:
         new_node = Node(data)
         if self.head.val == None:
             self.head = new_node
+            self.size += 1
             return
         current = self.head
         while current.next != None:
             current = current.next
         current.next = new_node
+        self.size += 1
+        return
 
     def add_infront(self, data) -> None:
         """Gets and prints the spreadsheet's header columns
@@ -70,6 +74,8 @@ class LinkedList:
         new_node = Node(data)
         new_node.next = self.head
         self.head = new_node
+        self.size += 1
+        return
 
     def display(self) -> list:
         """Gets and prints the spreadsheet's header columns
@@ -111,29 +117,6 @@ class LinkedList:
             a list of strings used that are the header columns
         """
         return self.head
-
-    def get_length(self):
-        """Gets and prints the spreadsheet's header columns
-
-        Parameters
-        ----------
-        file_loc : str
-            The file location of the spreadsheet
-        print_cols : bool, optional
-            A flag used to print the columns to the console (default is
-            False)
-
-        Returns
-        -------
-        list
-            a list of strings used that are the header columns
-        """
-        length = 0
-        current = self.head
-        while current:
-            length += 1
-            current = current.next
-        return length
 
     def get_last(self):
         """Gets and prints the spreadsheet's header columns
@@ -205,6 +188,9 @@ class LinkedList:
             current = current.next
         return 'Index Out of Range'
 
+    def get_size(self):
+        return self.size
+
 
     def sum(self):
         """Gets and prints the spreadsheet's header columns
@@ -250,6 +236,7 @@ class LinkedList:
         while current:
             if item == current.val:
                 prev.next = current.next
+                self.size -= 1
                 return
             prev = current
             current = current.next
@@ -286,9 +273,8 @@ list.delete(2)
 
 print(list.display())
 
-print('length')
-print(list.get_length())
-print()
-
 print('sum')
 print(list.sum())
+
+print('size')
+print(list.get_size())
