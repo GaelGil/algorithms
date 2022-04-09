@@ -1,48 +1,43 @@
-class Node:
-    """
-    A class used to represent a single node
-
-    Attributes
-    ----------
-    val : int
-        Value of the node
-    left : node
-        The address of the left node (set to None by default)
-    right: node
-        The address of the right noed (set to None by default)
-
-    Methods
-    -------
-    None
-    """
-    def __init__(self, val=0, left=None, right=None) -> None:
-        self.val = val
-        self.left = left
-        self.right = right
+from tree_node import Node
 
 class Tree:
     """
-    A class used to represent a single node
+    A class used to represent a binary tree.
 
     Attributes
     ----------
-    val : int
-        Value of the node
-    left : node
-        The address of the left node (set to None by default)
-    right: node
-        The address of the right noed (set to None by default)
+    root : node
+        A node at the root of the tree
 
     Methods
     -------
     insert(self, data)
         Insert node into the three
-
     _insert(self, data, current_node)
-        Find the correct spot to insert our node in the tree
-    
+        Find the correct spot to insert our node in the tree.
     get_root(self)
-        return the root of out tree
+        return the root of out tree.
+    includes(self, value)
+    _sum(self)
+        Get the sum of the tree.
+    _min(self)
+        Get the min value of our tree.
+    _max(self)
+        Get the max value of our tree.
+    in_order(self)
+        Start in order traversal.
+    _in_order(self, node)
+        Continue in order traversal.
+    pre_order(self)
+        Start pre oder traversal.
+    _pre_order(self, node)
+        Continue pre order traversal.
+    post_order(self)
+        Start post order traversal.
+    _post_order(self, node)
+        Continue post order_traversal.
+    bfs(self)
+        Preform breadth first search.
     """
 
     def __init__(self) -> None:
@@ -137,7 +132,7 @@ class Tree:
         """
         return
 
-    def sum(self):
+    def _sum(self):
         """Gets and prints the spreadsheet's header columns
 
         Parameters
