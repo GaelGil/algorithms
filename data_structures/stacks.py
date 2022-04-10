@@ -30,7 +30,9 @@ class Stack:
         """Add to top of our stack. If our stack is currently empty
         we set the top equal to our new node. If our stack is not empty
         we set our new node to point to our top and our new node is set
-        to equal our new top.
+        to equal our new top. T
+        The time complexity of this is O(1) because we have access to the
+        top which is where we add to.
 
         Parameters
         ----------
@@ -52,6 +54,8 @@ class Stack:
     def pop(self):
         """Remove the top node of our stack. Set our top to the current tops
         next node.
+        The time complexity of this is O(1) because we have access to the
+        top so we can just reasign this.
 
         Parameters
         ----------
@@ -66,6 +70,8 @@ class Stack:
 
     def peek(self):
         """Return the current top node of our stack.
+        The time complexity of this is O(1) because we have access to the
+        top so we can easily return it.
 
         Parameters
         ----------
@@ -73,13 +79,16 @@ class Stack:
 
         Returns
         -------
-        None
+        node
+            The node at the top of our list.
         """
         return self.top
 
     def is_empty(self):
         """A function to check if our stack is empty. We check if we have a top 
         node. If we dont then its empty and we return a bool.
+        The time complexity of this is O(1) because we have access to the
+        top so we can easily check if our stack is empty.
 
         Parameters
         ----------
@@ -97,6 +106,8 @@ class Stack:
     def display(self):
         """Function to return a list containing all the values of the 
         nodes in our stack.
+        The time complexity of this is O(n) because we have to iterate through
+        all the nodes in our stack and add them to a list.
 
         Parameters
         ----------
@@ -160,6 +171,8 @@ class StackList:
 
     def push(self, val):
         """Add to top of our stack. We append to `self.stack` which is a list.
+        The time complexity of this is O(1) because we have access to the
+        top which is where we add to.
 
         Parameters
         ----------
@@ -176,6 +189,8 @@ class StackList:
     def pop(self):
         """Remove the top item from stack. We pop the last element of our
         stack list.
+        The time complexity of this is O(1) because we know the index of the last
+        element so we can remove it.
 
         Parameters
         ----------
@@ -191,6 +206,8 @@ class StackList:
 
     def peek(self):
         """Return the item at the top of our stack
+        The time complexity of this is O(1) because we have the inex of the last
+        element so we can access it and return it.
 
         Parameters
         ----------
@@ -207,7 +224,9 @@ class StackList:
 
     def is_empty(self):
         """A function to check if our stack is empty. We check if our list is empty
-        or not. We return a bool if our stack list empty or not.
+        or not. We return a bool if our stack list empty or not. 
+        The time complexity of this is O(1) because we just check if our list is there
+        or not.
 
         Parameters
         ----------
@@ -224,6 +243,7 @@ class StackList:
 
     def display(self):
         """Function to our stack list.
+        The time complexity of this is O(1) because we return our list.
 
         Parameters
         ----------

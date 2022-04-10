@@ -13,7 +13,7 @@ class DoublyLinkedNode:
 class DoublyLinkedList:
     def __init__(self) -> None:
         self.head = DoublyLinkedList()
-        self.tail = DoublyLinkedList(val=None, prev=head, next=None)
+        self.tail = DoublyLinkedList(val=None, prev=self.head, next=None)
         self.size = 0
 
     def append(self):
