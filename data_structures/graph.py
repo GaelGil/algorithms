@@ -39,6 +39,7 @@ class Graph:
         return
 
     def insert_new_neighbor(self, node, neighbor):
+        # TODO: finish docuementation
         """Gets and prints the spreadsheet's header columns
 
         Parameters
@@ -62,6 +63,7 @@ class Graph:
         
 
     def contains(self, val):
+        # TODO: finish docuementation
         """Gets and prints the spreadsheet's header columns
 
         Parameters
@@ -113,6 +115,7 @@ class Graph:
 
 
     def bfs(self, node):
+        # TODO: finish docuementation
         """Gets and prints the spreadsheet's header columns
 
         Parameters
@@ -141,6 +144,7 @@ class Graph:
         return visited
 
     def dfs(self, node):
+        # TODO: finish docuementation
         """Gets and prints the spreadsheet's header columns
 
         Parameters

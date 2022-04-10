@@ -12,6 +12,7 @@ class DoublyLinkedList:
         self.size = 0
 
     def append(self):
+
         return
 
     def append_front(self):
