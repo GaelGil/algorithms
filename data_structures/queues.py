@@ -29,7 +29,7 @@ class Queue:
         self.tail = None
 
     def enqueue(self, data):
-        """Add a node to our queue.
+        """Add a node to our queue. If we have a tail
 
         Parameters
         ----------
@@ -140,136 +140,124 @@ print()
 
 class QueueList:
     """
-    A class used to represent a stack with nodes
+    A class used to represent a queue with nodes.
 
     Attributes
     ----------
-    top : node
-        The node at the top of the stack
+    queue: list
+        The list representing our queue.
 
     Methods
     -------
-    push(self, data)
-        Insert node at the top of our stack
-    pop(self, data, current_node)
-        Remove the top node from the stack
-    get_top(self)
-        Return the top of the stack.
-    is_empty(self)
-        Check if the stack is empty.
+    enqueue(self, data)
+        Insert node at the top of our stack.
+    dequeue(self, data, current_node)
+        Remove the top node from the stack.
+    get_head(self)
+        Get the head of queue.
+    get_tail(self)
+        Get the tail of our queue.
+    get_length(self)
+        Get the lenght of the queue
     display(self)
-        Get the sum of the tree.
+        Get our queue in a list format
     """
     def __init__(self) -> None:
         self.queue = []
 
     def enqueue(self, data):
-        """Gets and prints the spreadsheet's header columns
+        """Insert a value at position 0 of our queue list. This way what we first
+        added will always be at the last index of our list.
+        The time complexcity of this is O(1) because we have the index of where we want
+        to add our data.
 
         Parameters
         ----------
-        file_loc : str
-            The file location of the spreadsheet
-        print_cols : bool, optional
-            A flag used to print the columns to the console (default is
-            False)
+        data: int
+            The value we want to insert into our queue list.
 
         Returns
         -------
-        list
-            a list of strings used that are the header columns
+        None
         """
         self.queue.insert(0, data)
         return 
 
     def dequeue(self):
-        """Gets and prints the spreadsheet's header columns
+        """Removes the value at the last index in our list.
+        The time complexcity of this is O(1) because we have the index of where we want
+        to remove.
 
         Parameters
         ----------
-        file_loc : str
-            The file location of the spreadsheet
-        print_cols : bool, optional
-            A flag used to print the columns to the console (default is
-            False)
+        None
 
         Returns
         -------
-        list
-            a list of strings used that are the header columns
+        None
         """
         self.queue.pop()
         return
 
     def get_head(self):
-        """Gets and prints the spreadsheet's header columns
+        """Returns the item at the last index of our list. This is the head of
+        our queue.
+        The time complexcity of this is O(1) because we have the index of where the
+        head is.
 
         Parameters
         ----------
-        file_loc : str
-            The file location of the spreadsheet
-        print_cols : bool, optional
-            A flag used to print the columns to the console (default is
-            False)
+        None
 
         Returns
         -------
-        list
-            a list of strings used that are the header columns
+        int
+            The integer at the front of our queue list.
         """
         return self.queue[-1]
 
     def get_tail(self):
-        """Gets and prints the spreadsheet's header columns
+        """Returns tha item at the 0th index of our list. This is the tail of our
+        queue list.
+        The time complexcity of this is O(1) because we have the index of where the
+        tail is.
 
         Parameters
         ----------
-        file_loc : str
-            The file location of the spreadsheet
-        print_cols : bool, optional
-            A flag used to print the columns to the console (default is
-            False)
+        None
 
         Returns
         -------
-        list
-            a list of strings used that are the header columns
+        int
+            The integer at the back of our queue list.
         """
         return self.queue[0]
 
     def get_lenght(self):
-        """Gets and prints the spreadsheet's header columns
+        """Returns the length of our queue.
 
         Parameters
         ----------
-        file_loc : str
-            The file location of the spreadsheet
-        print_cols : bool, optional
-            A flag used to print the columns to the console (default is
-            False)
+        None
 
         Returns
         -------
-        list
-            a list of strings used that are the header columns
+        int
+            The lenght of our queue.
         """
         return len(self.queue)
 
     def display(self):
-        """Gets and prints the spreadsheet's header columns
+        """Returns our queue list.
 
         Parameters
         ----------
-        file_loc : str
-            The file location of the spreadsheet
-        print_cols : bool, optional
-            A flag used to print the columns to the console (default is
-            False)
+        None
 
         Returns
         -------
         list
-            a list of strings used that are the header columns
+            The queue list.
         """
         return self.queue
 
