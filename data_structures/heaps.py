@@ -19,6 +19,7 @@ class Heap:
         self.root = None
 
     def insert(self):
+        # TODO: finish docuementation
         """Gets and prints the spreadsheet's header columns
 
         Parameters
@@ -37,6 +38,7 @@ class Heap:
         return
 
     def _insert(self):
+        # TODO: finish docuementation
         """Gets and prints the spreadsheet's header columns
 
         Parameters
@@ -55,6 +57,7 @@ class Heap:
         return
 
     def bfs(self):
+        # TODO: finish docuementation
         """Gets and prints the spreadsheet's header columns
 
         Parameters

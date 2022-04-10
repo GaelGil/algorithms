@@ -18,6 +18,7 @@ class Graph:
 
 
     def insert_node(self, node, neighbors=[]):
+        # TODO: finish docuementation
         """Gets and prints the spreadsheet's header columns
 
         Parameters
@@ -40,6 +41,7 @@ class Graph:
 
 
     def insert_neighbor_of_node(self, node, neighbor):
+        # TODO: finish docuementation
         """Gets and prints the spreadsheet's header columns
 
         Parameters
@@ -65,6 +67,7 @@ class Graph:
 
 
     def bfs(self):
+        # TODO: finish docuementation
         """Gets and prints the spreadsheet's header columns
 
         Parameters
@@ -84,6 +87,7 @@ class Graph:
 
 
     def dfs(self):
+        # TODO: finish docuementation
         """Gets and prints the spreadsheet's header columns
 
         Parameters
@@ -103,6 +107,7 @@ class Graph:
 
 
     def display(self):
+        # TODO: finish docuementation
         """Gets and prints the spreadsheet's header columns
 
         Parameters

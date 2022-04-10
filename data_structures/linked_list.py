@@ -28,6 +28,7 @@ class LinkedList:
         self.size = 0
 
     def append(self, data) -> None:
+        # TODO: finish docuementation
         """Gets and prints the spreadsheet's header columns
 
         Parameters
@@ -56,6 +57,7 @@ class LinkedList:
         return
 
     def add_infront(self, data) -> None:
+        # TODO: finish docuementation
         """Gets and prints the spreadsheet's header columns
 
         Parameters
@@ -78,6 +80,7 @@ class LinkedList:
         return
 
     def display(self) -> list:
+        # TODO: finish docuementation
         """Gets and prints the spreadsheet's header columns
 
         Parameters
@@ -101,6 +104,7 @@ class LinkedList:
         return items
 
     def get_head(self):
+        # TODO: finish docuementation
         """Gets and prints the spreadsheet's header columns
 
         Parameters
@@ -119,6 +123,7 @@ class LinkedList:
         return self.head
 
     def get_last(self):
+        # TODO: finish docuementation
         """Gets and prints the spreadsheet's header columns
 
         Parameters
@@ -141,6 +146,7 @@ class LinkedList:
 
 
     def get_item(self, item):
+        # TODO: finish docuementation
         """Gets and prints the spreadsheet's header columns
 
         Parameters
@@ -164,6 +170,7 @@ class LinkedList:
         return 'Not Found'
 
     def get_index(self, index):
+        # TODO: finish docuementation
         """Gets and prints the spreadsheet's header columns
 
         Parameters
@@ -193,6 +200,7 @@ class LinkedList:
 
 
     def sum(self):
+        # TODO: finish docuementation
         """Gets and prints the spreadsheet's header columns
 
         Parameters
@@ -216,6 +224,7 @@ class LinkedList:
         return sum_
 
     def delete(self, item):
+        # TODO: finish docuementation
         """Gets and prints the spreadsheet's header columns
 
         Parameters
