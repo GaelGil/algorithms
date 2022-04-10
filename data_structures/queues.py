@@ -29,6 +29,7 @@ class Queue:
         self.tail = None
 
     def enqueue(self, data):
+        # TODO: finish this comment
         """Add a node to our queue. If we have a tail
 
         Parameters
@@ -49,6 +50,7 @@ class Queue:
         return
 
     def dequeue(self):
+        # TODO: finish this comment
         """
 
         Parameters
