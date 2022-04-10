@@ -14,7 +14,7 @@ class DoublyLinkedList:
     def append(self):
         return
 
-    def append(self):
+    def append_front(self):
         return
 
     def insert_after_value(self, value):

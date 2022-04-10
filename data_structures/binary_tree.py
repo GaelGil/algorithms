@@ -137,21 +137,17 @@ class Tree:
         return False
 
     def _sum(self):
-        # TODO: finish docuementation
-        """Gets and prints the spreadsheet's header columns
+        """Get the sum of our binary tree. We do this by performing bredth
+        first search. 
 
         Parameters
         ----------
-        file_loc : str
-            The file location of the spreadsheet
-        print_cols : bool, optional
-            A flag used to print the columns to the console (default is
-            False)
+        None
 
         Returns
         -------
-        list
-            a list of strings used that are the header columns
+        int
+            The sum of our tree.
         """
         queue = [self.root]
         sum_tree = 0
@@ -165,21 +161,17 @@ class Tree:
         return sum_tree
 
     def _min(self):
-        # TODO: finish docuementation
-        """Gets and prints the spreadsheet's header columns
+        """Gets the smalest number in our tree. We do this by performing
+        bredth first search.
 
         Parameters
         ----------
-        file_loc : str
-            The file location of the spreadsheet
-        print_cols : bool, optional
-            A flag used to print the columns to the console (default is
-            False)
+        None
 
         Returns
         -------
-        list
-            a list of strings used that are the header columns
+        int
+            The smallest value in our binary tree.
         """
         queue = [self.root]
         min_val = self.root.val
@@ -194,21 +186,17 @@ class Tree:
         return min_val
 
     def _max(self):
-        # TODO: finish docuementation
-        """Gets and prints the spreadsheet's header columns
+        """Get the largest value in our tree. We do this by performing breadth
+        first search.
 
         Parameters
         ----------
-        file_loc : str
-            The file location of the spreadsheet
-        print_cols : bool, optional
-            A flag used to print the columns to the console (default is
-            False)
+        None
 
         Returns
         -------
-        list
-            a list of strings used that are the header columns
+        int
+            The largest value in our tree.
         """
         queue = [self.root]
         max_val = self.root.val
