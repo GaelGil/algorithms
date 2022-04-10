@@ -1,8 +1,3 @@
-from logging.config import valid_ident
-from msilib.schema import Class
-from tkinter.messagebox import NO
-
-
 class DoublyLinkedNode:
     def __init__(self, val, prev=None, next=None) -> None:
         self.val = val
@@ -19,7 +14,13 @@ class DoublyLinkedList:
     def append(self):
         return
 
-    def insert(self):
+    def append(self):
+        return
+
+    def insert_after_value(self, value):
+        return
+
+    def insert_at_index(self, index):
         return 
 
     def delete(self):

@@ -2,45 +2,43 @@ from node import Node
 
 class Queue:
     """
-    A class used to represent a stack with nodes
+    A class used to represent a queue with nodes.
 
     Attributes
     ----------
-    top : node
-        The node at the top of the stack
+    head : node
+        The node at the front of our queue.
+    tail: node
+        The node at the end of our queue.
 
     Methods
     -------
-    push(self, data)
-        Insert node at the top of our stack
-    pop(self, data, current_node)
-        Remove the top node from the stack
-    get_top(self)
-        Return the top of the stack.
-    is_empty(self)
-        Check if the stack is empty.
+    enqueue(self, data)
+        Insert node at the top of our stack.
+    dequeue(self, data, current_node)
+        Remove the top node from the stack.
     display(self)
-        Get the sum of the tree.
+        Get our queue in a list format
+    get_head(self)
+        Get the head of queue.
+    get_tail(self)
+        Get the tail of our queue.
     """
     def __init__(self) -> None:
         self.head = None
         self.tail = None
 
     def enqueue(self, data):
-        """Gets and prints the spreadsheet's header columns
+        """Add a node to our queue.
 
         Parameters
         ----------
-        file_loc : str
-            The file location of the spreadsheet
-        print_cols : bool, optional
-            A flag used to print the columns to the console (default is
-            False)
+        data: node
+            Node we want add to our queue.
 
         Returns
         -------
-        list
-            a list of strings used that are the header columns
+        None
         """
         new_node = Node(data)
         if self.tail:
@@ -51,20 +49,15 @@ class Queue:
         return
 
     def dequeue(self):
-        """Gets and prints the spreadsheet's header columns
+        """
 
         Parameters
         ----------
-        file_loc : str
-            The file location of the spreadsheet
-        print_cols : bool, optional
-            A flag used to print the columns to the console (default is
-            False)
+        None
 
         Returns
         -------
-        list
-            a list of strings used that are the header columns
+        None
         """
         if self.head:
             if self.head == self.tail:
@@ -75,20 +68,19 @@ class Queue:
         return
 
     def display(self):
-        """Gets and prints the spreadsheet's header columns
+        """Function to return a list containing all the values of the 
+        nodes in our queue.
+        The time complexity of this is O(n) because we have to iterate through
+        all the nodes in our queue and add them to a list.
 
         Parameters
         ----------
-        file_loc : str
-            The file location of the spreadsheet
-        print_cols : bool, optional
-            A flag used to print the columns to the console (default is
-            False)
+        None
 
         Returns
         -------
         list
-            a list of strings used that are the header columns
+            A list of the nodes in our queue
         """
         items = []
         current = self.head
@@ -98,38 +90,30 @@ class Queue:
         return items
 
     def get_head(self):
-        """Gets and prints the spreadsheet's header columns
+        """Return the head node of our queue.
 
         Parameters
         ----------
-        file_loc : str
-            The file location of the spreadsheet
-        print_cols : bool, optional
-            A flag used to print the columns to the console (default is
-            False)
+        None
 
         Returns
         -------
-        list
-            a list of strings used that are the header columns
+        node
+            The node in the front of the queue.
         """
         return self.head
 
     def get_tail(self):
-        """Gets and prints the spreadsheet's header columns
+        """Return the tail node of our queue.
 
         Parameters
         ----------
-        file_loc : str
-            The file location of the spreadsheet
-        print_cols : bool, optional
-            A flag used to print the columns to the console (default is
-            False)
+        None
 
         Returns
         -------
-        list
-            a list of strings used that are the header columns
+        node
+            The node at the front of the queue.
         """
         return self.tail
 
