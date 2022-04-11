@@ -40,7 +40,7 @@ class LinkedList:
         self.size = 0
 
     def append(self, data) -> None:
-        """Add another node at the end of our linked list. If our head 
+        """Add another node at the end of our linked list. If our head
         is empty we set our head to be equal to our new node. We also
         increase the size of our linked list so we add that. Then we return
         If our head is not empty we iterate all the way to the end of the list
@@ -65,14 +65,14 @@ class LinkedList:
             self.size += 1
             return
         current = self.head
-        while current.next != None:
+        while current.next is not None:
             current = current.next
         current.next = new_node
         self.size += 1
         return
 
-    def add_infront(self, data) -> None:
-        """Add a node to the beggining of our linked list. 
+    def add_infront(self, data):
+        """Add a node to the beggining of our linked list.
         The time complexcity of this is O(1) because we have access to the head.
 
         Parameters
@@ -88,24 +88,22 @@ class LinkedList:
         new_node.next = self.head
         self.head = new_node
         self.size += 1
-        return
+
 
     def display(self) -> list:
-        # TODO: finish docuementation
-        """Gets and prints the spreadsheet's header columns
+        """Gets all the elements in our linked list and returns them as
+        a regular list.
+        The time complexcity of this is O(n) because we have to iterate
+        through the whole list and add the items to our list.
 
         Parameters
         ----------
-        file_loc : str
-            The file location of the spreadsheet
-        print_cols : bool, optional
-            A flag used to print the columns to the console (default is
-            False)
+        None
 
         Returns
         -------
         list
-            a list of strings used that are the header columns
+            A list containing the values of the nodes in our linked list
         """
         items = []
         current = self.head
@@ -142,7 +140,7 @@ class LinkedList:
             The last node in our list.
         """
         current = self.head
-        while current.next != None:
+        while current.next is not None:
             current = current.next
         return current
 
@@ -174,21 +172,21 @@ class LinkedList:
         return 'Not Found'
 
     def get_index(self, index):
-        # TODO: finish docuementation
-        """Gets and prints the spreadsheet's header columns
+        """Return the node at the index we want.
+        The time complexity of this is O(n) where n is the index of the
+        node we are trying to delete. It's O(n) because we have to iterate
+        the list to get to that position. It's not a regular list where we
+        can access by index.
 
         Parameters
         ----------
-        file_loc : str
-            The file location of the spreadsheet
-        print_cols : bool, optional
-            A flag used to print the columns to the console (default is
-            False)
+        index: int
+            The index of the node we are trying to find
 
         Returns
         -------
-        list
-            a list of strings used that are the header columns
+        node
+            The node at the index we wanr
         """
         current_index = 0
         current = self.head
@@ -200,6 +198,18 @@ class LinkedList:
         return 'Index Out of Range'
 
     def get_size(self):
+        """Return the size of the linked list. The size is a class variable
+        that is update everytime we add and delete to our list.
+
+        Parameters
+        ----------
+        None
+
+        Returns
+        -------
+        int
+            Size of the linked list
+        """
         return self.size
 
 
@@ -226,33 +236,34 @@ class LinkedList:
             current = current.next
         return sum_
 
-    def delete(self, item):
-        # TODO: finish docuementation
-        """Gets and prints the spreadsheet's header columns
+    def delete(self, value):
+        """Delets a node in our list by value. We do this iterating through
+        our list and keeping track of the previous node we go through the
+        list. If we find our value in the list we set our previous node next
+        value to the node we are trying to delete's next value.
+        The time complexcity of this is O(n) because we have to iterate through
+        the whole list in worset case scenario.
 
         Parameters
         ----------
-        file_loc : str
-            The file location of the spreadsheet
-        print_cols : bool, optional
-            A flag used to print the columns to the console (default is
-            False)
+        value: int
+            The value we are trying to delete from our linked list
 
         Returns
         -------
-        list
-            a list of strings used that are the header columns
+        str
+            A string saying `value not found` if its not in our linked list.
         """
         current = self.head
         prev = self.head
         while current:
-            if item == current.val:
+            if value == current.val:
                 prev.next = current.next
                 self.size -= 1
-                return
+                return f'Delete {value}'
             prev = current
             current = current.next
-        return f'{item} not found'
+        return f'{value} not found'
 
 
 list = LinkedList()
