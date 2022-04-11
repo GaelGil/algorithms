@@ -49,14 +49,16 @@ class Graph:
             self.graph[node] = neigbors
 
     def insert_new_neighbor(self, node, neighbor):
-        # TODO: finish docuementation
-        """Add a new neighbor to an exisiting node.
+        """Function to add a neighbor to an existing node. If that neighbor
+        is already in the list of neighbors of that existing node. We don't
+        add it. If its not an existing neighbor to that node we add it to
+        the list of neighbors. We also add that new neighbor as a node with
+        the `insert_node` function.
 
         Parameters
         ----------
         node: int
             Node we are trying to add a neighbor to.
-        
         neighbor: int
             The neighbor we want to add to the node.
 
@@ -91,17 +93,21 @@ class Graph:
             return True
         return False
 
+
     def contains_path(self, origin, destination, type_='dfs'):
-        # TODO: finish docuementation
-        """Gets and prints the spreadsheet's header columns
+        """Check if a node has a path to another node. First we check if
+        the origin node and the destination node exist. If they do not
+        theres no way a path could exist. 
 
         Parameters
         ----------
-        file_loc : str
-            The file location of the spreadsheet
-        print_cols : bool, optional
-            A flag used to print the columns to the console (default is
-            False)
+        origin : node
+            The origin where we start at.
+        destination : node
+            The destination node
+        type_ : str, optional
+            A string to pick which type of traversal to use(default is
+            dfs)
 
         Returns
         -------
@@ -109,8 +115,8 @@ class Graph:
             a list of strings used that are the header columns
         """
 
-        if self.contains(origin) is False:
-            return f'{origin} not in graph'
+        if self.contains(origin) is False or self.contains(origin) is False:
+            return f'One of the nodes is not in the graph'
         if type_ == 'dfs':
             visited = self.dfs(origin)
             if visited and destination in visited:
@@ -123,8 +129,14 @@ class Graph:
 
 
     def bfs(self, node):
-        # TODO: finish docuementation
-        """Gets and prints the spreadsheet's header columns
+        """Function to perform breadth first traversal. In breadth first
+        traversal we get all the nodes neighbors and keep exploring other
+        nodes from those nodes. We do this by starting at some node adding
+        its neighbors to a queue. Then we select the node at the beggining
+        of our queue to remove but to also traverse their nodes by adding
+        them to the queue. We repeate this until we cant anymore. We also
+        use a dictionary to check which nodes we have visited so we don't
+        repeate forever.
 
         Parameters
         ----------
@@ -157,8 +169,8 @@ class Graph:
         can continue exploring other nodes and their nodes. We do this by
         starting at some node adding its neighbors to a stack. Then we select
         the node at the top of our stack to remove but to also traverse their
-        nodes. We also keep a dictionary to check which nodes we have visited
-        so we don't repeate forever.
+        nodes. We repeate this until we cant anymore. We also use a dictionary
+        to check which nodes we have visited so we don't repeate forever.
 
         Parameters
         ----------
