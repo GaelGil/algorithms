@@ -186,11 +186,11 @@ class Graph:
         stack = [node]
         visited = {}
         while stack:
-            node = stack.pop()
+            current_node = stack.pop()
             # print(node)
-            if node not in visited and node in self.graph:
-                visited[node] = 0
-                for i in self.graph[node]:
+            if current_node not in visited and current_node in self.graph:
+                visited[current_node] = 0
+                for i in self.graph[current_node]:
                     stack.append(i)
         return visited
 
