@@ -1,90 +1,98 @@
 class Graph:
     """
-    A class used to represent a single node
+    A class used to represent a graph with a dictionary
 
     Attributes
     ----------
-    val : int
-        Value of the node
-    next : node
-        The address of the next node
+    graph: dict
+        The dictionary representing our graph
 
     Methods
     -------
-    None
+    insert_node(self, node, neighbors)
+        Insert a new node in the graph and its neighbors.
+    insert_new_neighbor(self, node, neighbor)
+        Insert a new neighbor to an existing node.
+    contains(self, val)
+        Check if there is a certain value in our graph
+    contains_path(self, origin, destination, type_)
+        Check if a certain node has a path to another node
+    bfs(self)
+        Preform breadth first search.
+    dfs(self)
+        Perform depth first search on graph.
+    display(self)
+        Return the dictionary that represents our graph.
     """
     def __init__(self) -> None:
         self.graph = {}
 
-    def insert_node(self, node, neigbors):
-        # TODO: finish docuementation
-        """Gets and prints the spreadsheet's header columns
+    def insert_node(self, node, neigbors=[]):
+        """Function to insert a node and its neighbors into our graph. We
+        first check that the node is not currently in our dictionary graph.
+        Once we know its not we add a new key to our dictionary (node) and
+        its value (neighbors).
 
         Parameters
         ----------
-        file_loc : str
-            The file location of the spreadsheet
-        print_cols : bool, optional
-            A flag used to print the columns to the console (default is
-            False)
+        node: int
+            The node we are trying to add to our graph
+        neighbors: list
+            The list of neighbors to our node
 
         Returns
         -------
-        list
-            a list of strings used that are the header columns
+        None
         """
 
         if not self.contains(node):
-            self.graph[node] = neigbors            
-        return
+            self.graph[node] = neigbors
 
     def insert_new_neighbor(self, node, neighbor):
         # TODO: finish docuementation
-        """Gets and prints the spreadsheet's header columns
+        """Add a new neighbor to an exisiting node.
 
         Parameters
         ----------
-        file_loc : str
-            The file location of the spreadsheet
-        print_cols : bool, optional
-            A flag used to print the columns to the console (default is
-            False)
+        node: int
+            Node we are trying to add a neighbor to.
+        
+        neighbor: int
+            The neighbor we want to add to the node.
 
         Returns
         -------
-        list
-            a list of strings used that are the header columns
+        None
         """
-
-        for i in self.graph[node]:
-            if i == neighbor:
-                return
+        if neighbor in self.graph[node]:
+            return
         self.graph[node].append(neighbor)
-        
+        if not self.contains(neighbor):
+            self.insert_node(neighbor)
+
 
     def contains(self, val):
-        # TODO: finish docuementation
-        """Gets and prints the spreadsheet's header columns
+        """Function to check if we have a certain node in our dictionary graph.
+        The time complexcity of this is O(1) because we to check for a
+        dictionaries value its constant time.
 
         Parameters
         ----------
-        file_loc : str
-            The file location of the spreadsheet
-        print_cols : bool, optional
-            A flag used to print the columns to the console (default is
-            False)
+        val: int
+            The value we are trying to check for.
 
         Returns
         -------
-        list
-            a list of strings used that are the header columns
+        bool
+            True if the value is in the graph. False if it is not.
         """
 
         if val in self.graph:
             return True
         return False
 
-    def contains_path(self, origin, destination, type_):
+    def contains_path(self, origin, destination, type_='dfs'):
+        # TODO: finish docuementation
         """Gets and prints the spreadsheet's header columns
 
         Parameters
@@ -101,7 +109,7 @@ class Graph:
             a list of strings used that are the header columns
         """
 
-        if self.contains(origin) == False:
+        if self.contains(origin) is False:
             return f'{origin} not in graph'
         if type_ == 'dfs':
             visited = self.dfs(origin)
@@ -131,36 +139,38 @@ class Graph:
         list
             a list of strings used that are the header columns
         """
-    
+
         queue = [node]
         visited = {}
         while queue:
-            n = queue.pop()
+            current_node = queue.pop()
             # print(n)
-            if n not in visited and node in self.graph:
-                visited[n] = 0
-                for i in self.graph[n]:
+            if current_node not in visited and current_node in self.graph:
+                visited[node] = 0
+                for i in self.graph[current_node]:
                     queue.insert(0, i)
         return visited
 
     def dfs(self, node):
-        # TODO: finish docuementation
-        """Gets and prints the spreadsheet's header columns
+        """Function that performs depth first search. In depth first search
+        once we have a node we have to explore all its other nodes until we
+        can continue exploring other nodes and their nodes. We do this by
+        starting at some node adding its neighbors to a stack. Then we select
+        the node at the top of our stack to remove but to also traverse their
+        nodes. We also keep a dictionary to check which nodes we have visited
+        so we don't repeate forever.
 
         Parameters
         ----------
-        file_loc : str
-            The file location of the spreadsheet
-        print_cols : bool, optional
-            A flag used to print the columns to the console (default is
-            False)
+        node: int
+            The node to start our depth first traversal at
 
         Returns
         -------
-        list
-            a list of strings used that are the header columns
+        dict
+            All the other nodes we were able to visit by starting at
+            our node.
         """
-
         stack = [node]
         visited = {}
         while stack:
@@ -174,9 +184,19 @@ class Graph:
 
 
     def display(self):
+        """Return the dictionary graph.
+
+        Parameters
+        ----------
+        None
+
+        Returns
+        -------
+        dict
+            The dictionary that represents our graph.
+        """
         return self.graph
 
-    
 
 # graph = {
 #     'a': ['b', 'c', 'd', 'l'],
@@ -212,7 +232,3 @@ path_a_to_g = g.contains_path('a', 'g','dfs')
 
 print(f'Does g contain some path to a: {path_g_to_a}')
 print(f'Does a contain some path to g: {path_a_to_g}')
-
-
-
-
