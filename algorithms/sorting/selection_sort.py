@@ -17,9 +17,6 @@ def selection(nums):
     for i in range(len(nums)-1):
         min_index = i
         for j in range(i+1, len(nums)):
-            print(f'nums[i]: {nums[i]}')
-            print(f'nums[j]: {nums[j]}')
-            print()
             if nums[j] < nums[min_index]:
                 min_index = j
         if min_index != i:
