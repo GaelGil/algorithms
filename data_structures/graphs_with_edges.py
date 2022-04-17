@@ -158,11 +158,11 @@ class Graph:
         visited = {}
         while queue:
             current_node = queue.pop()
-            # print(n)
             if current_node not in visited and current_node in self.graph:
-                visited[node] = 0
+                # print(current_node)
+                visited[current_node] = 0
                 for i in self.graph[current_node]:
-                    queue.insert(0, i)
+                    queue.insert(0, i[0])
         return visited
 
 
@@ -195,9 +195,33 @@ class Graph:
             if current_node not in visited and current_node in self.graph:
                 visited[current_node] = 0
                 for i in self.graph[current_node]:
-                    stack.append(i)
+                    stack.append(i[0])
         return visited
 
+
+    def dijkstra(self, start, destination):
+        # TODO: finish docuementation
+        """Function that performs depth first search. In depth first search
+        once we have a node we have to explore all its other nodes until we
+        can continue exploring other nodes and their nodes. We do this by
+        starting at some node adding its neighbors to a stack. Then we select
+        the node at the top of our stack to remove but to also traverse their
+        nodes. We repeate this until we cant anymore. We also use a dictionary
+        to check which nodes we have visited so we don't repeate forever.
+
+        Parameters
+        ----------
+        node: int
+            The node to start our depth first traversal at
+
+        Returns
+        -------
+        dict
+            All the other nodes we were able to visit by starting at
+            our node.
+        """
+        path = {}
+        return path
 
     def display(self):
         # TODO: finish docuementation
@@ -220,14 +244,16 @@ class Graph:
 
 
 g = Graph()
-g.insert_node('a', [['b', 1], ['c', 5], ['d', 2]])
-g.insert_node('b')
-g.insert_node('c', [['e', 3], ['f', 4]])
-g.insert_node('d', [['c', 2 ], ['f', 6]])
-g.insert_node('e', [['f', 3], ['g', 1]])
-g.insert_node('f', [['g', 4]])
+g.insert_node('a', [['b', 2], ['c', 4]])
+g.insert_node('b', [['c', 1], ['d', 7]])
+g.insert_node('c', [['e', 3]])
+g.insert_node('d', [['g', 1]])
+g.insert_node('e', [['d', 2], ['g', 5]])
 g.insert_node('g', [])
 print(g.display())
 print()
-g.insert_neighbor_of_node('g', ['b', 1])
+# g.insert_neighbor_of_node('g', ['b', 1])
 print(g.display())
+
+print(g.bfs('a'))
+print(g.dfs('a'))
