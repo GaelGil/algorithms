@@ -1,3 +1,7 @@
+import queue
+from readline import write_history_file
+
+
 class Graph:
     """
     A class used to represent a graph with edges. We do this with
@@ -133,7 +137,6 @@ class Graph:
         return False
 
     def bfs(self, node):
-        # TODO: finish docuementation
         """Function to perform breadth first traversal. In breadth first
         traversal we get all the nodes neighbors and keep exploring other
         nodes from those nodes. We do this by starting at some node adding
@@ -167,7 +170,6 @@ class Graph:
 
 
     def dfs(self, node):
-        # TODO: finish docuementation
         """Function that performs depth first search. In depth first search
         once we have a node we have to explore all its other nodes until we
         can continue exploring other nodes and their nodes. We do this by
@@ -220,25 +222,37 @@ class Graph:
             All the other nodes we were able to visit by starting at
             our node.
         """
-        path = {}
+        graph = self.graph.copy()
+        path = []
+        visied = {}
+        queue = [[start, 0]]
+        while queue:
+            current_node = queue.pop()
+            if current_node[0] == destination:
+                return path
+            if current_node[0] not in visied and current_node[0] in graph:
+                visied[current_node[0]] = 0
+                shortest = graph[current_node[0]][0]
+                for i in graph[current_node[0]]:
+                    current = i[1]
+                    if current
+                    if current < shortest[1]:
+                        shortest = i
+                path.append(shortest)
+                queue.insert(0, shortest)
         return path
 
     def display(self):
-        # TODO: finish docuementation
-        """Gets and prints the spreadsheet's header columns
+        """Returns the dictionary that we are using to represent a graph
 
         Parameters
         ----------
-        file_loc : str
-            The file location of the spreadsheet
-        print_cols : bool, optional
-            A flag used to print the columns to the console (default is
-            False)
+        None
 
         Returns
         -------
-        list
-            a list of strings used that are the header columns
+        dict
+            The graph
         """
         return self.graph
 
@@ -250,10 +264,13 @@ g.insert_node('c', [['e', 3]])
 g.insert_node('d', [['g', 1]])
 g.insert_node('e', [['d', 2], ['g', 5]])
 g.insert_node('g', [])
-print(g.display())
-print()
+# print(g.display())
+# print()
 # g.insert_neighbor_of_node('g', ['b', 1])
-print(g.display())
+# print(g.display())
 
-print(g.bfs('a'))
-print(g.dfs('a'))
+# print(g.bfs('a'))
+# print(g.dfs('a'))
+
+
+print(g.dijkstra('a', 'g'))
