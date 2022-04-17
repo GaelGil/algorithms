@@ -1,6 +1,6 @@
 nums = [1, 3, 4, 6, 9, 11, 33, 99, 1089, 3454, 199089] # ordered numbers
 
-def recursive(nums, target):
+def recursive(nums, left, right, target):
     """Function to perform bubble sort. We do this by iterating through
     the entire list. For each iteration (i) we iterate again checking for
     pairs (j, j+1). If j is greater than j+1 then we swap it.
@@ -17,19 +17,7 @@ def recursive(nums, target):
     list
         The list but its now sorted
     """
-    if len(nums) <= 1:
-        return 
-    mid = len(nums)//2
-    left = nums[:mid]
-    right = nums[mid:]
-    if nums[mid] == target:
-        return f'found at inedx {mid}'
-    if nums[mid] > target:
-        recursive(left, target)
-    if nums[mid] < target:
-        recursive(right, target)
-
-    return 'not in list'
+    return
 
 def iterative(nums, target):
     """Function to perform bubble sort. We do this by iterating through
@@ -68,5 +56,6 @@ print(iterative(nums, 11))
 print(iterative(nums, 10))
 print()
 print('Recursive')
-print(recursive(nums, 11))
+print(recursive(nums, 33))
+print()
 print(recursive(nums, 10))
