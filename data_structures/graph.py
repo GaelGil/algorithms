@@ -156,9 +156,9 @@ class Graph:
         visited = {}
         while queue:
             current_node = queue.pop()
-            # print(n)
+            print(current_node)
             if current_node not in visited and current_node in self.graph:
-                visited[node] = 0
+                visited[current_node] = 0
                 for i in self.graph[current_node]:
                     queue.insert(0, i)
         return visited
@@ -244,3 +244,5 @@ path_a_to_g = g.contains_path('a', 'g','dfs')
 
 print(f'Does g contain some path to a: {path_g_to_a}')
 print(f'Does a contain some path to g: {path_a_to_g}')
+
+
