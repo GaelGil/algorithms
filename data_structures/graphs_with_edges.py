@@ -1,7 +1,3 @@
-import queue
-from readline import write_history_file
-
-
 class Graph:
     """
     A class used to represent a graph with edges. We do this with
