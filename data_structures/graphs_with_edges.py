@@ -235,7 +235,6 @@ class Graph:
                 shortest = graph[current_node[0]][0]
                 for i in graph[current_node[0]]:
                     current = i[1]
-                    if current
                     if current < shortest[1]:
                         shortest = i
                 path.append(shortest)
