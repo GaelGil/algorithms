@@ -211,42 +211,32 @@ class Tree:
         return max_val
 
     def in_order(self):
-        # TODO: finish docuementation
-        """Gets and prints the spreadsheet's header columns
+        """Function to preform in order traversal on our binary tree.
 
         Parameters
         ----------
-        file_loc : str
-            The file location of the spreadsheet
-        print_cols : bool, optional
-            A flag used to print the columns to the console (default is
-            False)
+        None
 
         Returns
         -------
-        list
-            a list of strings used that are the header columns
+        None
         """
         if self.root:
             self._in_order(self.root) 
         return 
 
     def _in_order(self, node):
-        # TODO: finish docuementation
-        """Gets and prints the spreadsheet's header columns
+        """Function to continue in order traversal on our binary tree
+        recursively.
 
         Parameters
         ----------
-        file_loc : str
-            The file location of the spreadsheet
-        print_cols : bool, optional
-            A flag used to print the columns to the console (default is
-            False)
+        node : node
+            The current node to traverse
 
         Returns
         -------
-        list
-            a list of strings used that are the header columns
+        None
         """
         if node:
             self._in_order(node.left)
@@ -255,30 +245,33 @@ class Tree:
         return
 
     def pre_order(self):
-        # TODO: finish docuementation
-        """ 
-        like depth first search (explore all the nodes and their paths then go back and explore others) 
+        """Function to start pre order traversal on our binary tree. This is like depth
+        first search because we explore all of a current nodes paths and nodes first
+        before we explore everything else.
+
+        Parameters
+        ----------
+        None
+
+        Returns
+        -------
+        None
         """
         if self.root:
             self._pre_order(self.root)
         return
 
     def _pre_order(self, node):
-        # TODO: finish docuementation
-        """Gets and prints the spreadsheet's header columns
+        """Function to continue pre order traversal on our binary tree. 
 
         Parameters
         ----------
-        file_loc : str
-            The file location of the spreadsheet
-        print_cols : bool, optional
-            A flag used to print the columns to the console (default is
-            False)
+        node : node
+            The node we are currently at in our traversal
 
         Returns
         -------
-        list
-            a list of strings used that are the header columns
+        None
         """
         if node:
             print(node.val)
@@ -287,21 +280,15 @@ class Tree:
         return
 
     def post_order(self):
-        # TODO: finish docuementation
-        """Gets and prints the spreadsheet's header columns
+        """Function to start post order traversal.
 
         Parameters
         ----------
-        file_loc : str
-            The file location of the spreadsheet
-        print_cols : bool, optional
-            A flag used to print the columns to the console (default is
-            False)
+        None
 
         Returns
         -------
-        list
-            a list of strings used that are the header columns
+        None
         """
         if self.root:
             self._post_order(self.root)
@@ -313,7 +300,7 @@ class Tree:
         Parameters
         ----------
         node : node
-            Node we are trying to print
+            The node we are currently at in our post order traversal.
 
         Returns
         -------
