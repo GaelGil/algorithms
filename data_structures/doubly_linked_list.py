@@ -112,21 +112,23 @@ class DoublyLinkedList:
         return 
 
     def pop(self, left=False):
-        # TODO: finish documentation
-        """Gets all the elements in our linked list and returns them as
-        a regular list.
-        The time complexcity of this is O(n) because we have to iterate
-        through the whole list and add the items to our list.
+        """Pop from left or right of our doubly linked list. By default we pop
+        from the right. What we do is make the `tails prev` node point to
+        `tails prev prev` node. Lastly because the tails previous node is already
+        the the prev prev. We make that nodes next point to our next.
+        If we want to pop from the left we do something similar. What we do is
+        make `head next` point to `head next next`. Then we make that node point back
+        the head as its previous.
 
         Parameters
         ----------
         left: bool
             Bool to see if we want to pop left or right of the list.
+            (set to False as default)
 
         Returns
         -------
-        list
-            A list containing the values of the nodes in our linked list
+        None
         """
         if not left:
             self.tail.prev = self.tail.prev.prev
@@ -194,10 +196,37 @@ class DoublyLinkedList:
         return self.head
 
     def get_index(self, index):
+        """Return the node at the specified index in our list.
+
+        Parameters
+        ----------
+        index : int
+            The index at our linked lists which node we want. 
+
+        Returns
+        -------
+        Node
+            The node at that index in our list. (false if doesnt exist)
+        """
+        if index > self.size:
+            return False
         return
 
     def get_value(self, val):
+        """Return the node which has the same value as we want in our list.
+
+        Parameters
+        ----------
+        val : int
+            The value of a node in our linked lists which node we want. 
+
+        Returns
+        -------
+        Node
+            The node which matches a value in our list. (false if doesnt exist)
+        """
         return
+
 
     def get_size(self):
         """Return the size of the linked list. The size is a class variable
