@@ -1,4 +1,4 @@
-from merge_sorted import merge
+from .merge_sorted import merge
 
 
 def merge_sort(nums):
