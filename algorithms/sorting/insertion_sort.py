@@ -16,7 +16,9 @@ def selection(nums):
     """
     for i in range(1, len(nums)):
         right = nums[i]
-        while nums[i-1] > right:
+        print(i-1)
+        while nums[i-1] > right and i>0:
+            # print(nums)
             temp = nums[i]
             nums[i] = nums[i-1]
             nums[i-1] = temp
