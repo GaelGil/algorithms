@@ -76,7 +76,6 @@ class DoublyLinkedList:
             new_node.next = self.tail
             self.tail.prev = new_node
         self.size += 1
-        return
 
     def preppend(self, data):
         """Add a node to the beggining of our linked list.
@@ -103,13 +102,41 @@ class DoublyLinkedList:
            self.head.next = new_node
            self
         self.size += 1
-        return
 
-    def insert_after_value(self, value):
-        return
+    def insert_at_index(self, index, value):
+        """
+        Function to insert a node at a certain index in a doubly linked list.
+        If the index we want to add is greater than the size of our list we
+        return false. We create a current index variable and iterate the list.
+        Once we arrive at the index we want we assign the correct directions.
+        The new nodes previous points to the current node and the next points
+        to the currents next. Then the currents next previous points to the new
+        node. Lastly the current nodes next points to the new node.
 
-    def insert_at_index(self, index):
-        return 
+        Parameters
+        ----------
+        index : int
+            The index we want to add our new node to.
+
+        value : int
+            The value of our new node
+
+        Returns
+        -------
+        None
+        """
+        if index > self.size:
+            return False
+        current_index = 0
+        current = self.head
+        new_node = DoublyLinkedNode(value)
+        while current:
+            if current_index == index:
+                new_node.prev = current
+                new_node.next = current.next
+                current.next.prev = new_node
+                current.next = new_node
+            current_index += 1
 
     def pop(self, left=False):
         """Pop from left or right of our doubly linked list. By default we pop
@@ -133,13 +160,13 @@ class DoublyLinkedList:
         if not left:
             self.tail.prev = self.tail.prev.prev
             self.tail.prev.next = self.tail
-            return
         if left:
             self.head.next = self.head.next.next
             self.head.next.prev = self.head
-            return
 
     def delete(self):
+        # TODO: Finish writing function
+        # TODO: Finish writing documentation
         return
 
     def display(self):
@@ -201,7 +228,7 @@ class DoublyLinkedList:
         Parameters
         ----------
         index : int
-            The index at our linked lists which node we want. 
+            The index at our linked lists which node we want.
 
         Returns
         -------
@@ -210,7 +237,14 @@ class DoublyLinkedList:
         """
         if index > self.size:
             return False
-        return
+        current = self.head
+        current_index = 0
+        while current:
+            if current_index == index:
+                return current
+            current = current.next
+            current_index += 1
+
 
     def get_value(self, val):
         """Return the node which has the same value as we want in our list.
@@ -218,14 +252,19 @@ class DoublyLinkedList:
         Parameters
         ----------
         val : int
-            The value of a node in our linked lists which node we want. 
+            The value of a node in our linked lists which node we want.
 
         Returns
         -------
         Node
             The node which matches a value in our list. (false if doesnt exist)
         """
-        return
+        current = self.head
+        while current:
+            if current.val == val:
+                return current
+            current = current.next
+        return f'Value {val} not in list'
 
 
     def get_size(self):
