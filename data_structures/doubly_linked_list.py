@@ -6,7 +6,6 @@ class DoublyLinkedNode:
 
 
 class DoublyLinkedList:
-    # TODO: finish documentation
     """
     A class used to represent a singly linked list.
 
@@ -20,25 +19,27 @@ class DoublyLinkedList:
     Methods
     -------
     append(self, data)
-        Insert node at the top of our stack.
-    add_infront(self, data)
-        Remove the top node from the stack.
-    display(self)
-        Get the sum of the tree.
+        Function to add new node at the end of the list.
+    preppend(self, data)
+        Function to add a new node at the front of doubly linked list.
+    insert_at_index(self)
+        Function to insert a node at a certain index in a doubly linked list. 
+    pop(self, left)
+        Function to pop left or right from the doubly linked list.
+    delete_at_index(self, index)
+        Delete the node at a specified index in the list.
+    display(self, item)
+        Return a list of the elements in the doubly linked list.
+    get_tail(self)
+        Return the tail node of the list.
     get_head(self)
-        Return the head node of the linked list.
-    get_last(self)
-        Return the node at the end of the linked list.
-    includes(self, item)
-        Check if linked list contains an item.
+        Return the head node of the list.
     get_index(self, index)
-        Get a node in the linked list by index.
+        Get node in list by index.
+    get_value(self, val)
+        Get a node in the doubly linked list by value
     get_size(self)
-        Return the size of the linked list.
-    sum(self)
-        Return the sum of the items in our linked list.
-    delete(self, item)
-        Delete and item if it is in our list
+        Get the size of the doubly linked list.
     """
     def __init__(self) -> None:
         self.head = DoublyLinkedNode(val=None)
@@ -164,10 +165,32 @@ class DoublyLinkedList:
             self.head.next = self.head.next.next
             self.head.next.prev = self.head
 
-    def delete(self):
-        # TODO: Finish writing function
-        # TODO: Finish writing documentation
-        return
+    def delete_at_index(self, index):
+        """Delete a node in a doubly linked list by index in the list. 
+        The time complexcity of this is O(n) because we have to iterate
+        through the list to get to any index.
+
+        Parameters
+        ----------
+        index : int
+            The index of the node we want to delete
+
+        Returns
+        -------
+        None
+        """
+        if index > self.size:
+            return
+        current_index = 0
+        current = self.head
+        while current:
+            if current_index == index:
+                current.prev.next = current.next
+                current.next.prev = current.prev
+                current = None
+                return
+            current = current.next
+
 
     def display(self):
         """Gets all the elements in our linked list and returns them as
@@ -262,7 +285,7 @@ class DoublyLinkedList:
         current = self.head
         while current:
             if current.val == val:
-                return current
+                return current.val
             current = current.next
         return f'Value {val} not in list'
 
