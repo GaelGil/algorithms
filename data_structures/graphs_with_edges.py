@@ -30,51 +30,58 @@ class Graph:
 
 
     def insert_node(self, node, neighbors=[]):
-        # TODO: finish docuementation
-        """Gets and prints the spreadsheet's header columns
+        """Add a new node to the dictionary which represents a graph.
+        If the node is already in the graph we return. Otherwise this is
+        a simple insertion to a dictionary.
 
         Parameters
         ----------
-        file_loc : str
-            The file location of the spreadsheet
-        print_cols : bool, optional
-            A flag used to print the columns to the console (default is
-            False)
+        node : int
+            The value of the node we want to add to our graph.
+
+        neighbors : list
+            A list of neighbors to the node we are adding to the graph. The format
+            for the list should be `neighbors=[[node, edge], [node, edge]]`.
+            By default it is set to an empty list.
 
         Returns
         -------
-        list
-            a list of strings used that are the header columns
+        None
         """
         if node in self.graph:
             return
         self.graph[node] = neighbors
-        return
 
 
     def insert_neighbor_of_node(self, node, neighbor):
-        # TODO: finish docuementation
-        """Gets and prints the spreadsheet's header columns
+        """Add a new neighbor to an existing node. If the neighbor we
+        are trying to add does not exist to our graph we add it. We also
+        check to make sure we are not adding a duplicate neighbor to the
+        node we are adding to.
 
         Parameters
         ----------
-        file_loc : str
-            The file location of the spreadsheet
-        print_cols : bool, optional
-            A flag used to print the columns to the console (default is
-            False)
+        node : int
+            The node we want to add a neighbor to.
+
+        neighbor : int
+            The neighbor we are trying to add.
 
         Returns
         -------
-        list
-            a list of strings used that are the header columns
+        None
         """
+        # If the neighbor we are trying to add does not already
+        # exist in the graph already we add it.
         if not node in self.graph:
+            self.insert_node(node)
             return
+        # Check if we are adding a duplicate neighbor
         for i in self.graph[node]:
             if neighbor[0] == i[0]:
                 return
-        self.graph[node].append(neighbor) 
+        # Add the new neighbor
+        self.graph[node].append(neighbor)
         return
 
 
@@ -102,7 +109,7 @@ class Graph:
     def contains_path(self, origin, destination, type_='dfs'):
         """Check if a node has a path to another node. First we check if
         the origin node and the destination node exist. If they do not
-        theres no way a path could exist. 
+        theres no way a path could exist.
 
         Parameters
         ----------
@@ -121,7 +128,7 @@ class Graph:
         """
 
         if self.contains(origin) is False or self.contains(origin) is False:
-            return f'One of the nodes is not in the graph'
+            return 'One of the nodes is not in the graph'
         if type_ == 'dfs':
             visited = self.dfs(origin)
             if visited and destination in visited:
@@ -199,6 +206,7 @@ class Graph:
 
     def dijkstra(self, start, destination):
         # TODO: finish docuementation
+        # TODO: finish function
         """Function that performs depth first search. In depth first search
         once we have a node we have to explore all its other nodes until we
         can continue exploring other nodes and their nodes. We do this by
