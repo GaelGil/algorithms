@@ -1,87 +1,36 @@
-from tree_node import Node
-
 class Heap:
     """
-    A class used to represent a single node
+    A class used to represent a heap
 
     Attributes
     ----------
-    val : int
-        Value of the node
-    next : node
-        The address of the next node
+    heap_list : list
+        A list representing the heap.
+
+    size : int
+        The size of our heap.
 
     Methods
     -------
     None
     """
     def __init__(self) -> None:
-        self.root = None
+        self.heap_list = []
+        self.size = 0
 
-    def insert(self):
+    def insert(self, value):
         # TODO: finish docuementation
-        """Gets and prints the spreadsheet's header columns
+        # TODO: finish writing function
+        """
+        Function to insert a value into a heap.
 
         Parameters
         ----------
-        file_loc : str
-            The file location of the spreadsheet
-        print_cols : bool, optional
-            A flag used to print the columns to the console (default is
-            False)
+        value : int
+            The value we want to add to our heap.
 
         Returns
         -------
-        list
-            a list of strings used that are the header columns
+        None
         """
-        return
-
-    def _insert(self):
-        # TODO: finish docuementation
-        """Gets and prints the spreadsheet's header columns
-
-        Parameters
-        ----------
-        file_loc : str
-            The file location of the spreadsheet
-        print_cols : bool, optional
-            A flag used to print the columns to the console (default is
-            False)
-
-        Returns
-        -------
-        list
-            a list of strings used that are the header columns
-        """
-        return
-
-    def bfs(self):
-        # TODO: finish docuementation
-        """Gets and prints the spreadsheet's header columns
-
-        Parameters
-        ----------
-        file_loc : str
-            The file location of the spreadsheet
-        print_cols : bool, optional
-            A flag used to print the columns to the console (default is
-            False)
-
-        Returns
-        -------
-        list
-            a list of strings used that are the header columns
-        """
-        queue = [self.root]
-        while queue:
-            node = queue.pop()
-            print(node.val)
-            if node.left:
-                queue.insert(0, node.left)
-            if node.right:
-                queue.insert(0, node.right)
-        return
-
-    def dfs(self):
         return
