@@ -39,23 +39,22 @@ def iterative(nums, target):
     left = 0
     right = len(nums)-1
     while left <= right:
-        if nums[left] == target:
-            return f'found at index {left}'
-        elif nums[right] == target:
-            return f'found at index {right}'
-        if nums[left] < target:
-            left += 1
-        elif nums[right] > target:
-            right -= 1
-
-    return 'not in list'
+        mid = int((left + right)/2)
+        if nums[mid] > target:
+            right = mid - 1
+        elif nums[mid] < target:
+            left = mid + 1
+        else:
+            return f'found at index {mid}'
+    return 'Not in list'
+        
 
 
 print('Iterative')
 print(iterative(nums, 11))
 print(iterative(nums, 10))
 print()
-print('Recursive')
-print(recursive(nums, 33))
-print()
-print(recursive(nums, 10))
+# print('Recursive')
+# print(recursive(nums, 33))
+# print()
+# print(recursive(nums, 10))
