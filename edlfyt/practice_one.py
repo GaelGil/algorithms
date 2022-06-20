@@ -9,6 +9,7 @@ def count_vowels(sample_string:str) -> int:
     return res
 
 print(count_vowels('The quick Brown Fox jumps'))
+print(count_vowels('The Dogs shall play'))
 
 
 def get_max(nums:list) -> int:
