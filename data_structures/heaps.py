@@ -18,19 +18,23 @@ class Heap:
         self.heap_list = []
         self.size = 0
 
-    def insert(self, value):
-        # TODO: finish docuementation
-        # TODO: finish writing function
-        """
-        Function to insert a value into a heap.
+    def peek(self):
+        return self.heap_list[0]
 
-        Parameters
-        ----------
-        value : int
-            The value we want to add to our heap.
+    def poll(self):
+        if self.heap_list:
+            self.heap_list().pop(0)
+        return False
 
-        Returns
-        -------
-        None
-        """
+    def add(self, value):
+        self.heap_list.append(value)
+        self.heapify_down
+
+    def heapify_down(self):
         return
+    
+    def heapify_up(self):
+        return
+
+
+heap = Heap()
