@@ -19,21 +19,76 @@ class Heap:
         self.size = 0
 
     def peek(self):
+        """
+        Function to return the value at the top of our heap.
+
+        Parameters
+        ----------
+        None
+
+        Returns
+        -------
+        None
+        """
         return self.heap_list[0]
 
     def poll(self):
+        """
+        Function to return the value at the top of our heap.
+
+        Parameters
+        ----------
+        None
+
+        Returns
+        -------
+        None
+        """
         if self.heap_list:
             self.heap_list().pop(0)
         return False
 
     def add(self, value):
+        """
+        Function to return the value at the top of our heap.
+
+        Parameters
+        ----------
+        None
+
+        Returns
+        -------
+        None
+        """
         self.heap_list.append(value)
         self.heapify_down
 
     def heapify_down(self):
+        """
+        Function to return the value at the top of our heap.
+
+        Parameters
+        ----------
+        None
+
+        Returns
+        -------
+        None
+        """
         return
     
     def heapify_up(self):
+        """
+        Function to return the value at the top of our heap.
+
+        Parameters
+        ----------
+        None
+
+        Returns
+        -------
+        None
+        """
         return
 
 
