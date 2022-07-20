@@ -29,8 +29,11 @@ class Queue:
         self.tail = None
 
     def enqueue(self, data):
-        # TODO: finish this comment
-        """Add a node to our queue. If we have a tail
+        """Add a node to our queue. If we don't have a head or tail node. Then the first value
+        we add to our list will be our head and tail node. Moving forward since we have a tail
+        we will set the tail.next to point to our new node. Also setting our new node to the tail.
+        The time complexcity of this is O(1) because we have access to the tail node so we just
+        assign a next node to the current tail and reassign the tail value to our new node.
 
         Parameters
         ----------
@@ -50,9 +53,12 @@ class Queue:
         return
 
     def dequeue(self):
-        # TODO: finish this comment
-        """
-
+        """Dequeue a node from our list. If we have a head node we want to check if it is
+        the only node in the list. If it is we set our head and tail node to equal None.
+        If we have more than one node then we set the head node to the current head.next node.
+        The time complexity of this is O(1) because we simply just reassign our head node to
+        the next node.
+    
         Parameters
         ----------
         None
@@ -170,8 +176,8 @@ class QueueList:
     def enqueue(self, data):
         """Insert a value at position 0 of our queue list. This way what we first
         added will always be at the last index of our list.
-        The time complexcity of this is O(1) because we have the index of where we want
-        to add our data.
+        The time complexcity of this is O(n) because although we are inserting at
+        a given index we are also shifting all the elements in the array one up.
 
         Parameters
         ----------
