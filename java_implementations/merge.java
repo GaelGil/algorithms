@@ -1,10 +1,7 @@
 import java.util.*;
 
-public class merge {
+public class Merge {
 
-   /* This is my first java program.
-    * This will print 'Hello World' as the output
-    */
 
     public static List<Integer> mergeList(List<Integer> numsOne, List<Integer> numsTwo){
         List<Integer> merged = new ArrayList<>();
