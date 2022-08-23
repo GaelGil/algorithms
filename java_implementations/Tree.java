@@ -27,17 +27,17 @@ public class Tree{
             this.root = new Node(data);
         }
         else {
-            _insert(data, this.root);
+            insert(data, this.root);
         }
     }
 
-    public void _insert(int data, Node currentNode){
+    public void insert(int data, Node currentNode){
         if (data < currentNode.val){
             if (currentNode.left == null){
                 currentNode.left = new Node(data);
             }
             else {
-                _insert(data, currentNode.left);
+                insert(data, currentNode.left);
             }
         }
         else if (data >= currentNode.val){
@@ -45,7 +45,7 @@ public class Tree{
                 currentNode.right = new Node(data);
             }
             else {
-                _insert(data, currentNode.right);
+                insert(data, currentNode.right);
             }
         }
     }
