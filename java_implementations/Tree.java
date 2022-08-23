@@ -53,39 +53,35 @@ public class Tree{
     public void dfs(){
         List<Node> stack = new ArrayList<>();
         stack.add(this.root);
+        while (stack.size() > 0 ){
+            Node currentNode = stack.get(stack.size()-1);
+            stack.remove(stack.size()-1);
+            System.out.println(currentNode.val);
+            if (currentNode.left != null){
+                stack.add(currentNode.left);
+            }
+            if (currentNode.right != null){
+                stack.add(currentNode.right);
+            }
+        }
+
     }
 
     public void bfs(){
         List<Node> queue = new ArrayList<>();
         queue.add(this.root);
-        while (queue != null){
-            currentNode = queue.popLeft();
-            System.out.println(currentNode);
-            if (currentNode.left){
+        while (queue.size() > 0 ){
+            Node currentNode = queue.get(0);
+            queue.remove(0);
+            System.out.println(currentNode.val);
+            if (currentNode.left != null){
                 queue.add(currentNode.left);
             }
-            if (currentNode.right){
+            if (currentNode.right != null){
                 queue.add(currentNode.right);
             }
         }
-
-
     }
-
-
-
-//    public static void main(String []args) {
-//         insert(10);
-//         // System.out.println(this.root);
-//         // Node root = new Node(4);
-//         // System.out.println(root.val);
-//         // root.left = new Node(5);
-//         // root.right = new Node(6);
-//         // // root(new Node(4), new Node(6));
-//         // System.out.println(root.left.val);
-//         // System.out.println(root.right.val);
-        
-//    }
 }
 
 
