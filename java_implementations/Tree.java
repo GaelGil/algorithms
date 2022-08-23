@@ -2,18 +2,27 @@ import java.util.*;
 
 
 public class Tree{
-    Node root;
+    private Node root;
 
     Tree(){
         this.root = null;
     }
 
-
     Tree(int val){
         this.root = new Node(val);       
     }
 
-    public static void insert(int data){
+    // get root node
+    public Node getRoot(){
+        return this.root;
+    }
+
+    // get root node value
+    public int getRootVal(){
+        return this.root.val;
+    }
+
+    public void insert(int data){
         if (this.root == null){
             this.root = new Node(data);
         }
@@ -22,7 +31,7 @@ public class Tree{
         }
     }
 
-    public static void _insert(int data, Node currentNode){
+    public void _insert(int data, Node currentNode){
         if (data < currentNode.val){
             if (currentNode.left == null){
                 currentNode.left = new Node(data);
@@ -39,6 +48,28 @@ public class Tree{
                 _insert(data, currentNode.right);
             }
         }
+    }
+
+    public void dfs(){
+        List<Node> stack = new ArrayList<>();
+        stack.add(this.root);
+    }
+
+    public void bfs(){
+        List<Node> queue = new ArrayList<>();
+        queue.add(this.root);
+        while (queue != null){
+            currentNode = queue.popLeft();
+            System.out.println(currentNode);
+            if (currentNode.left){
+                queue.add(currentNode.left);
+            }
+            if (currentNode.right){
+                queue.add(currentNode.right);
+            }
+        }
+
+
     }
 
 

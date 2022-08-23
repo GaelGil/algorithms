@@ -1,11 +1,14 @@
 // package Tree;
-import Tree.Tree;
+// import Tree.Tree;
 import java.util.*;
 
 public class usingTree {
 
    public static void main(String []args) {
-    Tree myTree = new Tree(4);
-
+    Tree myTree = new Tree(10);
+   System.out.println(myTree.getRootVal());
+   myTree.insert(6);
+   myTree.insert(11);
+   System.out.println(myTree.getRoot().right.val);
    }
 }
