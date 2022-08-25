@@ -50,30 +50,24 @@ public class Tree{
         }
     }
 
-    public void dfs(){
-        List<Node> stack = new ArrayList<>();
-        stack.add(this.root);
-        while (stack.size() > 0 ){
-            Node currentNode = stack.get(stack.size()-1);
-            stack.remove(stack.size()-1);
-            System.out.println(currentNode.val);
-            if (currentNode.left != null){
-                stack.add(currentNode.left);
-            }
-            if (currentNode.right != null){
-                stack.add(currentNode.right);
-            }
-        }
 
+    public void dfs(Node currentNode){
+        if (currentNode != null){
+            System.out.println(currentNode.val);
+            dfs(currentNode.left);
+            dfs(currentNode.right);
+        }
     }
+
+
 
     public void bfs(){
         List<Node> queue = new ArrayList<>();
         queue.add(this.root);
         while (queue.size() > 0 ){
             Node currentNode = queue.get(0);
-            queue.remove(0);
             System.out.println(currentNode.val);
+            queue.remove(0);
             if (currentNode.left != null){
                 queue.add(currentNode.left);
             }

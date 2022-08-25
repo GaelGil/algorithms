@@ -13,6 +13,7 @@ public class usingTree {
    myTree.insert(2);
    // System.out.println(myTree.getRoot().right.val);
    myTree.bfs();
-   myTree.dfs();
+   System.out.println();
+   myTree.dfs(myTree.getRoot());
    }
 }
