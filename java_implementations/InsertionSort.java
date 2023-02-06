@@ -5,7 +5,7 @@ public class InsertionSort {
     public static List<Integer> sortList(List<Integer> nums){
         for (int i = 1; i < nums.size(); i++){
             int right = nums.get(i);
-            while (nums.get(i-1) > right && i > 0){
+            while (i > 0 && nums.get(i-1) > right){
                 int temp = nums.get(i);
                 nums.set(i, nums.get(i-1));
                 nums.set(i-1, temp);
